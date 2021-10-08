@@ -1,0 +1,83 @@
+import { NoFocusIndicator, IconButton } from '../examples';
+import { MdContentCopy, MdEdit, MdDelete } from 'react-icons/md';
+import styles from '../../styles/Content.module.css';
+
+## キーボードで操作してみよう
+
+マウスやトラックパッドでの操作が困難な事情があって、キーボードによる操作で Web を閲覧している場合は多くあります。
+
+そのため、Web ページ上のすべての操作をキーボードで完結できるようにしてください。
+
+### キーボードによる主な操作方法
+
+- <kbd>Tab</kbd>キーを押してフォーカスを移動（<kbd>Shift</kbd>+<kbd>Tab</kbd>
+  キーで逆順に移動）
+
+  - リンク、ボタン、入力フォームなどにフォーカスが移動していく
+  - Safari を使用している場合は、設定によっては<kbd>Option</kbd> キーを押しながら
+    <kbd>Tab</kbd>キーや<kbd>Shift</kbd>+<kbd>Tab</kbd>
+    キーを押さないと、リンクなどにはフォーカスが移動しない場合があります
+
+- <kbd>Enter</kbd>キーを使ってリンクやボタンをクリック
+- <kbd>↑</kbd>, <kbd>↓</kbd>, <kbd>←</kbd>, <kbd>→</kbd>キーや
+  <kbd>PageUp</kbd>, <kbd>PageDown</kbd>キーでスクロール
+- チェックボックスは<kbd>Space</kbd>キー、ラジオボタンは<kbd>↑</kbd>, <kbd>↓</kbd>, <kbd>←</kbd>, <kbd>→</kbd>キーで選択状態を変更する
+- アプリケーションによっては上記の操作に加えて、いろいろなキー操作が実装されていることもある
+
+このページでは、キーボードでしか操作できない（マウスポインタでの操作ができない）状態を体験するために、マウスポインタを無効にする機能を実装してあります。
+キーボード操作により Web を閲覧する体験をするためには、ぜひ有効にしてみてください。
+
+（マウスポインタを元に戻す場合は、チェックボックスにフォーカスをあわせて<kbd>Space</kbd>キーを押すか、ページを再読み込みしてください）
+
+### フォーカス・インジケーター
+
+<kbd>Tab</kbd>
+キーを押してフォーカスを移動していくとき、フォーカスしている場所を枠線などで表現しているものを
+<strong>フォーカス・インジケーター</strong> と呼びます。
+
+フォーカス・インジケーターがどんな見た目で表示されるかは、ブラウザにより異なります。また、ページの製作者側で定義した見た目にすることもできます。
+見た目を変更する場合はフォーカスの位置がユーザーに伝わるようにしてください。「見た目がかっこ悪い」からといって、フォーカス・インジケーターを非表示にするのはやめてください。
+
+以下の例では、<kbd>Tab</kbd>キーや<kbd>Shift</kbd>+<kbd>Tab</kbd>キーでフォーカスを移動させ、<kbd>Enter</kbd>キーでボタンを押してみてください。
+
+#### 良い例: ブラウザのフォーカス・インジケーターを使用している
+
+<div className={styles.example}>
+  <IconButton
+    IconComponent={MdEdit}
+    ariaLabel="編集"
+    onClick={() => window.alert('編集')}
+  />
+  <IconButton
+    IconComponent={MdContentCopy}
+    ariaLabel="コピー"
+    onClick={() => window.alert('コピー')}
+  />
+  <IconButton
+    IconComponent={MdDelete}
+    ariaLabel="削除"
+    onClick={() => window.alert('削除')}
+  />
+</div>
+
+#### 悪い例: フォーカス・インジケーターが表示されていない
+
+<div className={styles.example}>
+  <NoFocusIndicator>
+    <IconButton
+      IconComponent={MdEdit}
+      ariaLabel="編集"
+      onClick={() => window.alert('編集')}
+    />
+    <IconButton
+      IconComponent={MdContentCopy}
+      ariaLabel="コピー"
+      onClick={() => window.alert('コピー')}
+    />
+    <IconButton
+      IconComponent={MdDelete}
+      ariaLabel="削除"
+      onClick={() => window.alert('削除')}
+    />
+  </NoFocusIndicator>
+</div>

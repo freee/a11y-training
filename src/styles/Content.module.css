@@ -1,0 +1,103 @@
+.contentSection + .contentSection {
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid #e9e7e7;
+}
+
+.contentSection > h2 {
+  margin: 0 0 1rem;
+  font-size: 2rem;
+  font-weight: normal;
+  line-height: 1.5;
+}
+.contentSection > h3 {
+  margin: 0 0 1rem;
+  font-size: 1.5rem;
+  font-weight: normal;
+  line-height: 1.5;
+}
+
+.contentSection > * + h3 {
+  margin-top: 2rem;
+}
+
+.contentSection > h4 {
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  font-weight: bold;
+  line-height: 1.5;
+}
+
+.contentSection > * + h4 {
+  margin-top: 1.5rem;
+}
+
+.contentSection p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.contentSection * + p {
+  margin-top: 1rem;
+}
+
+.contentSection ul,
+.contentSection ol {
+  margin: 0;
+  padding: 0 0 0 1.5em;
+  line-height: 1.5;
+}
+
+.contentSection li {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+.contentSection > * + ul,
+.contentSection > * + ol {
+  margin-top: 1rem;
+}
+
+.contentSection > dl {
+  margin: 1rem 0;
+}
+
+.contentSection dt {
+  font-weight: bold;
+}
+.contentSection dd {
+  margin: 0.25em 0 0.5em 1em;
+}
+
+.contentSection a {
+  color: #285ac8;
+  transition-duration: 0.3s;
+  transition-property: color;
+}
+
+.contentSection a:hover {
+  color: #2864f0;
+}
+
+.contentSection kbd,
+.contentSection code {
+  background: #f7f5f5;
+  font-family: monospace;
+  display: inline-block;
+  padding: 0.1em 0.25em;
+  margin: 0 0.25em 0 0;
+}
+.contentSection * + kbd,
+.contentSection * + code {
+  margin-left: 0.25em;
+}
+
+.example {
+  margin: 0;
+  background: #f7f5f5;
+  padding: 1.5rem;
+}
+* + .example {
+  margin-top: 1rem;
+}

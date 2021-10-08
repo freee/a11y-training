@@ -1,0 +1,157 @@
+import styles from '../../styles/Content.module.css';
+import { NoLinkUnderline, ButtonLikeLink, FakeLink } from '../examples';
+
+## リンク
+
+リンク（ハイパーリンク）の存在は Web には欠かせないものです。アクセシビリティーの高い Web ページを作成するためには、いくつか気をつけなければならないものがあります。
+
+### 見た目でリンクだとわかるようにする
+
+HTML では `<a href="https://www.freee.co.jp">freee株式会社</a>` のように記述すると、リンクとなります。
+多くのページでは、青系の文字色でアンダーラインつきの見た目で表示されます。
+
+#### 良い例: 見た目でリンクだと理解できる
+
+ほかのテキストと区別のつきやすい色や、アンダーラインがついていることで、リンクであることがわかりやすくなります。 ボタン風の見た目にするのもひとつの方法です。
+
+<div className={styles.example}>
+  <p>
+    <a href="https://corp.freee.co.jp">freee株式会社</a> では、
+    <a href="https://www.freee.co.jp/houjin/">freee会計</a>や<a href="https://www.freee.co.jp/hr/">
+      freee人事労務
+    </a>といったプロダクトの開発・提供を通して、だれもが自由に自然体で経営できる環境をつくっていきます。
+  </p>
+  <p>
+    freee株式会社では、一緒にスモールビジネスを盛り上げていくエンジニア・デザイナー・プロダクトマネージャーを募集しています
+  </p>
+  <p>
+    <ButtonLikeLink href="https://jobs.freee.co.jp/">
+      freee株式会社の採用情報
+    </ButtonLikeLink>
+  </p>
+</div>
+
+#### 悪い例: 下線がなく、リンクだとわかりづらい
+
+以下の例ではリンクのアンダーラインが、マウスオーバーしなければ表示されません。
+この状態ではリンクであることが一見するとわかりづらく、特にグレースケール表示にしていると、リンクの場所を認識するのが困難になります。
+
+<div className={styles.example}>
+  <NoLinkUnderline>
+    <p>
+      <a href="https://corp.freee.co.jp">freee株式会社</a> では、
+      <a href="https://www.freee.co.jp/houjin/">freee会計</a>や<a href="https://www.freee.co.jp/hr/">
+        freee人事労務
+      </a>といったプロダクトの開発・提供を通して、だれもが自由に自然体で経営できる環境をつくっていきます。
+    </p>
+    <p>
+      freee株式会社では、一緒にスモールビジネスを盛り上げていくエンジニア・デザイナー・プロダクトマネージャーを募集しています
+    </p>
+    <p>
+      <a href="https://jobs.freee.co.jp/">freee株式会社の採用情報</a>
+    </p>
+  </NoLinkUnderline>
+</div>
+
+### リンク先を具体的に表す文言にする
+
+スクリーンリーダーを使用していて、リンクへのジャンプを使用する場合や<kbd>Tab</kbd>キーでフォーカスを移動させていく場合、リンクに指定している文字列が読み上げられます。
+このとき、リンク先を具体的に表現した文字列になっていない場合、ユーザーはその前後を読んで文脈を理解しなければ、どれが目的のリンクなのか理解できなくなってしまいます。
+
+#### 良い例: リンク先が具体的に書かれている
+
+<div className={styles.example}>
+  <ul>
+    <li>
+      <a href="https://www.freee.co.jp/kakuteishinkoku/">
+        個人事業主のお客様向けの案内ページ
+      </a>
+    </li>
+    <li>
+      <a href="https://www.freee.co.jp/houjin/">
+        20名以下の法人のお客様向けの案内ページ
+      </a>
+    </li>
+    <li>
+      <a href="https://www.freee.co.jp/special/cloud-erp/professional/">
+        20名以上の法人のお客様向けの案内ページ
+      </a>
+    </li>
+  </ul>
+</div>
+
+#### 悪い例: リンク先のことが具体的に書かれていない
+
+以下の例ではすべてのリンクが「こちら」となっており、その手前のテキストを読まなければリンク先が何であるのかを理解できません。
+
+また、画面を視覚的に捉えているユーザーにとっても、「こちら」とい文字列部分が短いためマウスポインタを合わせてクリックすることが難しい場合があったり、アンダーラインを表示しないようにしている場合にはリンクを見つけづらい場合があったりします。
+
+<div className={styles.example}>
+  <ul>
+    <li>
+      個人事業主のお客様向けの案内ページは
+      <a href="https://www.freee.co.jp/kakuteishinkoku/">こちら</a>
+    </li>
+    <li>
+      20名以下の法人のお客様向けの案内ページは
+      <a href="https://www.freee.co.jp/houjin/">こちら</a>
+    </li>
+    <li>
+      20名以上の法人のお客様向けの案内ページは
+      <a href="https://www.freee.co.jp/special/cloud-erp/professional/">
+        こちら
+      </a>
+    </li>
+  </ul>
+</div>
+
+### `<a href="...">` で実装する
+
+リンクは `<a>` 要素に `href="..."` 属性があってはじめてリンクとして機能します。
+見た目や挙動をどんなにリンクに寄せても、 `<a href="...">` で実装されていなければ、スクリーンリーダーのユーザーにはリンクであることが伝わりません。
+
+それぞれの例で、以下のような操作を試してみてください。
+
+- マウスポインタを合わせてクリックする
+- <kbd>Tab</kbd>キーでフォーカスを合わせ、<kbd>Enter</kbd>キーを押下する
+- リンクを右クリックして、「新しいタブで開く」操作をする
+- <kbd>Control</kbd> (Windows) または <kbd>Command</kbd> (macOS) を押しながらクリックして、「新しいタブで開く」操作をする
+- スクリーンリーダーで操作する
+
+#### 良い例: `<a href="...">` で実装されたリンク
+
+<div className={styles.example}>
+  <a href="https://corp.freee.co.jp">freee株式会社</a>
+</div>
+
+#### 悪い例: `href` の無い `<a>` 要素
+
+<div className={styles.example}>
+  <a
+    onClick={() => {
+      location.href = 'https://corp.freee.co.jp';
+    }}
+  >
+    freee株式会社
+  </a>
+</div>
+
+#### 悪い例: `<a>` 要素を使用していない
+
+<div className={styles.example}>
+  <FakeLink href="https://corp.freee.co.jp">freee株式会社</FakeLink>
+</div>
+
+#### 悪い例: `href` と `onClick` （クリック時の処理）が異なる
+
+<div className={styles.example}>
+  <a
+    href="https://a11y-guidelines.freee.co.jp"
+    onClick={(e) => {
+      e.preventDefault();
+      location.href = 'https://corp.freee.co.jp';
+    }}
+  >
+    freee株式会社
+  </a>
+</div>

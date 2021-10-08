@@ -1,0 +1,116 @@
+import styles from '../../styles/Content.module.css';
+import { Button, FakeButton, IconButton, FakeIconButton } from '../examples';
+import { MdContentCopy, MdEdit, MdDelete } from 'react-icons/md';
+
+## ボタン
+
+Web アプリケーションにはボタンが必要不可欠です。静的な Web サイトでも、しばしばメニューボタンやアコーディオン、動画や画像をモーダルダイアログとして表示するボタンが配置されます。
+こういったボタンも、アクセシビリティー上の問題のある実装になっている場合がしばしばあります。
+
+正しく実装されたボタンは、以下のような条件を満たしています。
+
+- マウスポインターによる操作ができる
+- キーボードによる操作ができる
+- スクリーンリーダーで「ボタンであること」を知覚できる
+- スクリーンリーダーで「何のボタンであるか」を知覚できる
+- スクリーンリーダーによる操作ができる
+
+以下の例も、マウスポインターだけでなく、キーボードやスクリーンリーダーによる操作を試してみてください。
+
+### `<button>` 要素で実装する
+
+大事な原則として、クリックに反応するもの = ボタンを作る場合は、可能な限り `<button>` 要素を使用するようにしましょう。
+
+#### 良い例: `<button>` 要素を使用している
+
+<div className={styles.example}>
+  <Button onClick={() => window.alert('クリックされました')}>送信</Button>
+</div>
+
+#### 悪い例: `<span>` 要素を使用して、ボタン風の見た目にしている
+
+`<span>` や `<div>` をボタンのように使うべきではありません。キーボードやスクリーンリーダーでの操作が不可能であり、スクリーンリーダーにはボタンであることも伝わりません。
+
+<div className={styles.example}>
+  <FakeButton onClick={() => window.alert('クリックされました')}>
+    送信
+  </FakeButton>
+</div>
+
+#### 良い例: `<span>` 要素を使用して、ボタン風の見た目にし、ボタンの挙動をなるべく再現している
+
+これはあまり良くないない例です。 ** `<button>` 要素の使用を検討してください** 。
+
+既存の実装で `<button>` を使用しておらず、やむを得ない場合には、`role` `tabIndex` `onKeyDown` などを使い、誰もがボタンとして知覚し操作できる状態にしてください。
+
+<div className={styles.example}>
+  <FakeButton
+    onClick={() => window.alert('クリックされました')}
+    role="button"
+    tabIndex={0}
+    onKeyDown={(e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        window.alert('クリックされました');
+      }
+    }}
+  >
+    送信
+  </FakeButton>
+</div>
+
+### 画像やアイコンのボタンには代替テキストをつける
+
+Web アプリケーションではボタンに文字を表示せず、アイコンや画像を配置するのみとする場合が多くありますが、必ず代替テキストをつけてください。
+
+特に「`<button>` 要素ではなく `button` ロールも持たず、代替テキストも持たないボタン」を freee 社内では **「虚空」** と呼んでいます。
+虚空だらけの Web アプリケーションは、スクリーンリーダーでの操作が困難になります。
+
+#### 良い例: アイコンのボタンに `aria-label` による代替テキストがついている
+
+<div className={styles.example}>
+  <IconButton
+    IconComponent={MdEdit}
+    ariaLabel="編集"
+    onClick={() => window.alert('編集')}
+  />
+  <IconButton
+    IconComponent={MdContentCopy}
+    ariaLabel="コピー"
+    onClick={() => window.alert('コピー')}
+  />
+  <IconButton
+    IconComponent={MdDelete}
+    ariaLabel="削除"
+    onClick={() => window.alert('削除')}
+  />
+</div>
+
+#### 悪い例: アイコンのボタンに代替テキストがない
+
+`<button>` 要素による実装であるため、スクリーンリーダーではボタンであることを知覚できますが、何のボタンかを知覚できません。
+
+<div className={styles.example}>
+  <IconButton IconComponent={MdEdit} onClick={() => window.alert('編集')} />
+  <IconButton
+    IconComponent={MdContentCopy}
+    onClick={() => window.alert('コピー')}
+  />
+  <IconButton IconComponent={MdDelete} onClick={() => window.alert('削除')} />
+</div>
+
+#### 悪い例: アイコンのボタンが `<span>` で実装されていて、代替テキストがない（虚空）
+
+スクリーンリーダーでは、そこにボタン状のものが存在することすら認識することができません。
+
+<div className={styles.example}>
+  <FakeIconButton IconComponent={MdEdit} onClick={() => window.alert('編集')} />
+  <FakeIconButton
+    IconComponent={MdContentCopy}
+    onClick={() => window.alert('コピー')}
+  />
+  <FakeIconButton
+    IconComponent={MdDelete}
+    onClick={() => window.alert('削除')}
+  />
+</div>

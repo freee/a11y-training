@@ -1,0 +1,282 @@
+import styles from '../../styles/Content.module.css';
+import {
+  FormLabel,
+  FormItem,
+  TextField,
+  RadioButton,
+  CheckBox,
+  TelField,
+  BadTelField,
+  FormAnnotation,
+} from '../examples';
+
+## フォーム
+
+フォームには気をつけなければならない点が多くあります。Web アプリケーションでフォームが使えないことは致命的であるため、特に注意が必要です。
+
+### ラベル付け
+
+入力欄には必ず `<label>` 要素によるラベル付けを行い、何の入力欄であるのかを明確にしてください。
+ラベル付けが適切に行われることで、スクリーンリーダーのユーザーが <kbd>Tab</kbd> キー等で入力欄に移動した場合に、その前後を確認することなく何の入力欄であるかを認識できます。
+
+`<label>` 要素によるラベル付けはスクリーンリーダーのほかにも、チェックボックスやラジオボタンの操作をしやすくするためにも有効です。
+ラベル付けされたフィールドは、ラベル部分をクリックしてもフィールドをクリックしたときと同じ挙動をするため、チェックボックスやラジオボタンの操作が簡単になる効果があります。
+
+#### 良い例: `<label>` で囲ってラベル付けをしている
+
+ラベル部分とフィールドの両方を `<label>` 要素で囲うと、簡単にラベル付けを行うことができます。
+
+<div className={styles.example}>
+  <form
+    onSubmit={() => {
+      /* no-op */
+    }}
+  >
+    <FormItem>
+      <label>
+        <FormLabel>氏名</FormLabel>
+        <TextField type="text" />
+      </label>
+    </FormItem>
+    <FormItem>
+      <label>
+        <FormLabel>メールアドレス</FormLabel>
+        <TextField type="email" />
+      </label>
+    </FormItem>
+    <FormItem>
+      <fieldset>
+        <legend>
+          <FormLabel>性別</FormLabel>
+        </legend>
+        <label>
+          <RadioButton name="sex" value="1">
+            男性
+          </RadioButton>
+        </label>
+        <label>
+          <RadioButton name="sex" value="2">
+            女性
+          </RadioButton>
+        </label>
+        <label>
+          <RadioButton name="sex" value="9">
+            その他
+          </RadioButton>
+        </label>
+      </fieldset>
+    </FormItem>
+    <FormItem>
+      <label>
+        <CheckBox name="toc" value="agree">
+          利用規約に同意する
+        </CheckBox>
+      </label>
+    </FormItem>
+  </form>
+</div>
+
+#### 良い例: `<label>` 要素の `for` 属性（`htmlFor`）を使ってラベル付けを行う
+
+`<label for="field_id">` のようにラベル要素の `for` 属性に、フィールドの `id` 属性の値を渡すことで、フィールドとラベルの両方を `<label>` 要素に含めなくても、ラベル付けを行うことができます。
+複雑なレイアウトを行うのに便利ですが、`id` の重複には注意する必要があります。
+
+<div className={styles.example}>
+  <form
+    onSubmit={() => {
+      /* no-op */
+    }}
+  >
+    <FormItem>
+      <label htmlFor="form-example-label-for-name">
+        <FormLabel>氏名</FormLabel>
+      </label>
+      <TextField type="text" id="form-example-label-for-name" />
+    </FormItem>
+    <FormItem>
+      <label htmlFor="form-example-label-for-email">
+        <FormLabel>メールアドレス</FormLabel>
+      </label>
+      <TextField type="email" id="form-example-label-for-email" />
+    </FormItem>
+    <FormItem>
+      <fieldset>
+        <legend>
+          <FormLabel>性別</FormLabel>
+        </legend>
+        <RadioButton name="sex" value="1" id="form-example-label-for-sex-1">
+          <label htmlFor="form-example-label-for-sex-1">男性</label>
+        </RadioButton>
+        <RadioButton name="sex" value="2" id="form-example-label-for-sex-2">
+          <label htmlFor="form-example-label-for-sex-2">女性</label>
+        </RadioButton>
+        <RadioButton name="sex" value="9" id="form-example-label-for-sex-9">
+          <label htmlFor="form-example-label-for-sex-9">その他</label>
+        </RadioButton>
+      </fieldset>
+    </FormItem>
+    <FormItem>
+      <CheckBox name="toc" value="agree" id="form-example-label-for-toc-agree">
+        <label htmlFor="form-example-label-for-toc-agree">
+          利用規約に同意する
+        </label>
+      </CheckBox>
+    </FormItem>
+  </form>
+</div>
+
+#### 良い例: ラベルを表示していない場合に `aria-label` 属性を使用する
+
+原則としてラベルとなる文字列を表示するべきですが、もし視覚的に画面を捉えている場合は不要と思われるような場合には、 `aria-label` 属性でスクリーンリーダー等の支援技術に対してのみ、ラベル情報を付与してください
+
+<div className={styles.example}>
+  <form onSubmit={()=>{/* no-op */}}>
+  <FormItem>
+    <fieldset>
+      <legend><FormLabel>電話番号</FormLabel></legend>
+      <TelField />
+    </fieldset>
+  </FormItem>
+
+  </form>
+</div>
+
+#### 悪い例: ラベル付けがない
+
+<div className={styles.example}>
+  <form
+    onSubmit={() => {
+      /* no-op */
+    }}
+  >
+    <FormItem>
+      <FormLabel>氏名</FormLabel>
+      <TextField type="text" />
+    </FormItem>
+    <FormItem>
+      <FormLabel>メールアドレス</FormLabel>
+      <TextField type="email" />
+    </FormItem>
+    <FormItem>
+      <fieldset>
+        <legend>
+          <FormLabel>性別</FormLabel>
+        </legend>
+        <RadioButton name="sex" value="1">
+          男性
+        </RadioButton>
+        <RadioButton name="sex" value="2">
+          女性
+        </RadioButton>
+        <RadioButton name="sex" value="9">
+          その他
+        </RadioButton>
+      </fieldset>
+    </FormItem>
+    <FormItem>
+      <CheckBox name="toc" value="agree">
+        利用規約に同意する
+      </CheckBox>
+    </FormItem>
+  </form>
+</div>
+
+<div className={styles.example}>
+  <form
+    onSubmit={() => {
+      /* no-op */
+    }}
+  >
+    <FormItem>
+      <fieldset>
+        <legend>
+          <FormLabel>電話番号</FormLabel>
+        </legend>
+        <BadTelField />
+      </fieldset>
+    </FormItem>
+  </form>
+</div>
+
+### プレースホルダー
+
+入力フィールドの未入力時に表示される **プレースホルダー (placeholder)** は、なるべく使用を避けましょう。
+
+- 入力を始めるとプレースホルダーが非表示になるため、入力中に参照したい情報を提示するのには不適です
+- プレースホルダーは薄い色で表示されていることが多いため、存在に気づけなかったり、読むのが困難だったりする場合があります
+- プレースホルダーを表示したフィールドを入力済みと誤認してしまうおそれもあります
+
+#### 良い例: プレースホルダーを使用しない
+
+<div className={styles.example}>
+  <form
+    onSubmit={() => {
+      /* no-op */
+    }}
+  >
+    <FormItem>
+      <label>
+        <FormLabel>パスワード</FormLabel>
+        <TextField type="password" />
+      </label>
+      <FormAnnotation>8文字以上の英数字で入力してください</FormAnnotation>
+    </FormItem>
+  </form>
+</div>
+
+<div className={styles.example}>
+  <form
+    onSubmit={() => {
+      /* no-op */
+    }}
+  >
+    <FormItem>
+      <label>
+        <FormLabel>会社名</FormLabel>
+        <TextField type="text" />
+      </label>
+      <FormAnnotation>記入例: freee株式会社</FormAnnotation>
+    </FormItem>
+  </form>
+</div>
+
+#### 悪い例: プレースホルダーに記入ルールを記載している
+
+プレースホルダーに「8 文字以上」のような記入ルールを記載していると、入力中にそれを確認することができません。
+
+<div className={styles.example}>
+  <form
+    onSubmit={() => {
+      /* no-op */
+    }}
+  >
+    <FormItem>
+      <label>
+        <FormLabel>パスワード</FormLabel>
+        <TextField
+          type="password"
+          placeholder="8文字以上の英数字で入力してください"
+        />
+      </label>
+    </FormItem>
+  </form>
+</div>
+
+#### 悪い例: プレースホルダーに記入例を記載している
+
+プレースホルダーに記入例を記載していると、入力中に確認できないほか、入力済みの内容と誤認してしまうおそれがあります。
+
+<div className={styles.example}>
+  <form
+    onSubmit={() => {
+      /* no-op */
+    }}
+  >
+    <FormItem>
+      <label>
+        <FormLabel>会社名</FormLabel>
+        <TextField type="text" placeholder="freee株式会社" />
+      </label>
+    </FormItem>
+  </form>
+</div>

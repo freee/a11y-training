@@ -1,0 +1,104 @@
+import styles from '../../styles/Content.module.css';
+import { publicPath } from '../../utils/publicPath';
+
+## スクリーンリーダーを使ってみよう
+
+視覚障害があり、画面を視覚的に捉えることができないユーザーは、 **スクリーンリーダー**
+と呼ばれるソフトウェアを使用して、コンピューターを使用しています。
+スクリーンリーダーを使うと、画面上の情報を、音声や点字を使って読むことができます。
+
+スクリーンリーダーは、OS やデバイスごとに以下のような種類があります
+
+<dl>
+  <dt>Windows</dt>
+  <dd>
+    ナレーター（OSに標準搭載）、
+    <a href="https://www.nvda.jp/">NVDA</a>、<a href="https://www.aok-net.com/screenreader/">
+      PC-Talker
+    </a>、 <a href="http://www.extra.co.jp/jaws/">JAWS</a>など
+  </dd>
+  <dt>macOS</dt>
+  <dd>VoiceOver（OSに標準搭載）</dd>
+  <dt>Android</dt>
+  <dd>TalkBack（多くの場合標準搭載）</dd>
+  <dt>iOS / iPadOS</dt>
+  <dd>VoiceOver（OSに標準搭載）</dd>
+</dl>
+
+freee での PC 向け Web アプリケーションの動作確認には、日本語圏の視覚障害者に Windows ユーザーが多く、無料で積極的に新しい Web 技術に対応していっていることから、Windows + Chrome +NVDA を標準の動作確認環境としています。
+
+この研修では Windows を使用している人は NVDA を、macOS を使用している人は VoiceOver を使用してください。
+
+### スクリーンリーダーの使い方
+
+ここでは、スクリーンリーダーの体験や動作確認に必要な最低限の操作方法を紹介します。
+
+#### NVDA の使い方 (Windows)
+
+- [NVDA 日本語版の Web ページ](https://www.nvda.jp/) から、ダウンロードしてインストールしてください
+- <kbd>Insert</kbd>キーや<kbd>無変換</kbd>キーを <strong>
+    NVDAキー
+  </strong> として使用します
+- <kbd>NVDA</kbd>+<kbd>N</kbd> キーでメニューを開き、そこから終了することができます
+- <kbd>NVDA</kbd>+<kbd>Space</kbd>キーで、 <strong>フォーカスモード</strong> と <strong>
+    ブラウズモード
+  </strong> を切り替えながら使用します
+
+  - 画面を読んでいくときはブラウズモードの状態で、 <kbd>↑</kbd>, <kbd>↓</kbd>, <kbd>←</kbd>, <kbd>→</kbd> キーでカーソルを動かしていきます
+  - フォーム等を操作するときはフォーカスモードに切り替え、キー操作が Web ブラウザに直接渡るようにします
+
+- ブラウズモードでは、<kbd>H</kbd>キーで次の見出しへ移動したり、 <kbd>K</kbd>キーで次のリンクに移動したりできます（<kbd>Shift</kbd>キーを押しながらだと逆順になります）
+
+詳しくは[NVDA を用いたチェックの実施方法](https://a11y-guidelines.freee.co.jp/explanations/screen-reader-check-nvda.html) を参照してください。 また、
+[NVDA チートシート](https://github.com/nvdajp/cheatsheet/blob/master/nvdacheat.pdf)を見ながら操作することをお勧めします（このページで紹介していない操作についても書かれています）。
+
+#### VoiceOver の使い方 (macOS)
+
+- VoiceOver は macOS に標準搭載されています。インストールは必要ありません
+- 起動・終了の方法は複数あります。使用している Mac に最適な方法で起動してください
+  - <kbd>Command</kbd>キーを押しながら、Touch IDを素早く3回強く押し込む
+  - <kbd>Command</kbd>+<kbd>F5</kbd>キーを押下
+  - Siri を起動して「VoiceOver を起動して」「ViceOver を終了して」と言う
+  - VoiceOver を起動すると表示される「キャプションパネル」の左上の × ボタンでも終了できます
+- <kbd>CapsLock</kbd>または<kbd>Option</kbd>+<kbd>Control</kbd>を
+  <strong>VoiceOverキー</strong> として使用します
+- <kbd>VoiceOver</kbd>キーを押しながら、<kbd>↑</kbd>,<kbd>↓</kbd>,<kbd>←</kbd>,
+  <kbd>→</kbd>
+  キーでカーソルを動かして画面を読んでいきます
+- <kbd>VoiceOver</kbd>+<kbd>U</kbd>
+  でローターを開き、見出しなどへの移動ができます
+
+### 見出し
+
+このページ内には見出しが多く使われています。スクリーンリーダーの見出しのジャンプ機能を体験してみましょう。
+
+- NVDA では、ブラウズモードで<kbd>H</kbd>キーまたは<kbd>Shift</kbd>+<kbd>H</kbd>キーを押すことで、前後の見出しにジャンプすることができます
+- macOS の VoiceOver では、<kbd>VoiceOver</kbd>+<kbd>U</kbd>でローターを起動し、<kbd>←</kbd><kbd>→</kbd>キーで「見出しメニュー」に移動、<kbd>↑</kbd><kbd>↓</kbd>キーで見出しを辿ることができます
+
+### 画像の代替テキスト
+
+スクリーンリーダーではテキスト情報しか読み取ることができません。そのため、HTML の `<img>` 要素には、 **代替テキスト** を提供するための `alt` 属性があります。
+
+- ページの文脈にあわせて、画像の内容を説明する簡潔なテキストを代替テキストとして指定してください
+- 画像が装飾目的で配置され、ページの内容を理解するのに不必要な場合は、空の `alt` 属性（`alt=""`）を指定してください
+  - 単なるアイキャッチとしてイラストやアイコンが置かれている場合などが該当します
+  - いかなる場合も、 `img` 要素には `alt` 属性の指定が必要ということになります
+- `<svg>` 要素など、`<img>` 要素以外で画像を扱う場合には `aria-label` 属性や `aria-labelledby` 属性を使用します
+- 代替テキストは、<code>alt</code>属性から、「 **<ruby>alt<rp>(</rp><rt>おると</rt><rp>)</rp></ruby>テキスト** 」と呼ばれることがあります
+
+#### 良い例: 画像に代替テキストが指定されている
+
+<div className={styles.example}>
+  <img
+    src={publicPath('kurobe_dam.jpg')}
+    alt="黒部ダムの放水"
+    width={300}
+    height={400}
+  />
+</div>
+
+#### 悪い例: 代替テキストの指定がない
+
+<div className={styles.example}>
+  <img src={publicPath('kurobe_dam.jpg')} width={300} height={400} />
+</div>

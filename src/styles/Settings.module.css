@@ -1,0 +1,30 @@
+.settings {
+  padding: 0.5rem 4rem;
+  background-color: #f7f5f5;
+  font-size: 0.875rem;
+  display: flex;
+
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 100;
+}
+
+.labelCheckbox {
+  display: flex;
+}
+
+.labelCheckbox input[type='checkbox'] {
+  margin-right: 0.5em;
+}
+
+.labelCheckbox + .labelCheckbox {
+  margin-left: 1rem;
+}
+
+@media screen and (max-width: 48rem) {
+  .settings {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
