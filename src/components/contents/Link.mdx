@@ -87,22 +87,24 @@ HTML では `<a href="https://www.freee.co.jp">freee株式会社</a>` のよう�
 また、画面を視覚的に捉えているユーザーにとっても、「こちら」とい文字列部分が短いためマウスポインタを合わせてクリックすることが難しい場合があったり、アンダーラインを表示しないようにしている場合にはリンクを見つけづらい場合があったりします。
 
 <div className={styles.example}>
-  <ul>
-    <li>
-      個人事業主のお客様向けの案内ページは
-      <a href="https://www.freee.co.jp/kakuteishinkoku/">こちら</a>
-    </li>
-    <li>
-      20名以下の法人のお客様向けの案内ページは
-      <a href="https://www.freee.co.jp/houjin/">こちら</a>
-    </li>
-    <li>
-      20名以上の法人のお客様向けの案内ページは
-      <a href="https://www.freee.co.jp/special/cloud-erp/professional/">
-        こちら
-      </a>
-    </li>
-  </ul>
+  <NoLinkUnderline>
+    <ul>
+      <li>
+        個人事業主のお客様向けの案内ページは
+        <a href="https://www.freee.co.jp/kakuteishinkoku/">こちら</a>
+      </li>
+      <li>
+        20名以下の法人のお客様向けの案内ページは
+        <a href="https://www.freee.co.jp/houjin/">こちら</a>
+      </li>
+      <li>
+        20名以上の法人のお客様向けの案内ページは
+        <a href="https://www.freee.co.jp/special/cloud-erp/professional/">
+          こちら
+        </a>
+      </li>
+    </ul>
+  </NoLinkUnderline>
 </div>
 
 ### `<a href="...">` で実装する
@@ -140,18 +142,4 @@ HTML では `<a href="https://www.freee.co.jp">freee株式会社</a>` のよう�
 
 <div className={styles.example}>
   <FakeLink href="https://corp.freee.co.jp">freee株式会社</FakeLink>
-</div>
-
-#### 悪い例: `href` と `onClick` （クリック時の処理）が異なる
-
-<div className={styles.example}>
-  <a
-    href="https://a11y-guidelines.freee.co.jp"
-    onClick={(e) => {
-      e.preventDefault();
-      location.href = 'https://corp.freee.co.jp';
-    }}
-  >
-    freee株式会社
-  </a>
 </div>
