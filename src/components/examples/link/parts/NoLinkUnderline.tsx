@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../../styles/Examples.module.css';
+import styles from '../../../../styles/Examples.module.css';
 
 export const NoLinkUnderline = ({
   children,

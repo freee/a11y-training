@@ -16,7 +16,7 @@ const urlPrefix = process.env.URL_PREFIX ? `/${process.env.URL_PREFIX}` : '';
 
 module.exports = withMDX({
   reactStrictMode: true,
-  assetPrefix: urlPrefix,
+  assetPrefix: urlPrefix || '/',
   basePath: urlPrefix,
   trailingSlash: true,
   publicRuntimeConfig: {

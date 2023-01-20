@@ -1,5 +1,5 @@
 import styles from '../../styles/Content.module.css';
-import { NoLinkUnderline, ButtonLikeLink, FakeLink } from '../examples';
+import { GoodVisual, BadVisual, GoodLabels, BadLabels, GoodElement, BadElementA, BadElementSpan } from '../examples/link';
 
 ## リンク
 
@@ -14,44 +14,15 @@ HTML では `<a href="https://www.freee.co.jp">freee株式会社</a>` のよう�
 
 ほかのテキストと区別のつきやすい色や、アンダーラインがついていることで、リンクであることがわかりやすくなります。 ボタン風の見た目にするのもひとつの方法です。
 
-<div className={styles.example}>
-  <p>
-    <a href="https://corp.freee.co.jp">freee株式会社</a> では、
-    <a href="https://www.freee.co.jp/houjin/">freee会計</a>や<a href="https://www.freee.co.jp/hr/">
-      freee人事労務
-    </a>といったプロダクトの開発・提供を通して、だれもが自由に自然体で経営できる環境をつくっていきます。
-  </p>
-  <p>
-    freee株式会社では、一緒にスモールビジネスを盛り上げていくエンジニア・デザイナー・プロダクトマネージャーを募集しています
-  </p>
-  <p>
-    <ButtonLikeLink href="https://jobs.freee.co.jp/">
-      freee株式会社の採用情報
-    </ButtonLikeLink>
-  </p>
-</div>
+<GoodVisual />
 
 #### 悪い例: 下線がなく、リンクだとわかりづらい
 
 以下の例ではリンクのアンダーラインが、マウスオーバーしなければ表示されません。
 この状態ではリンクであることが一見するとわかりづらく、特にグレースケール表示にしていると、リンクの場所を認識するのが困難になります。
 
-<div className={styles.example}>
-  <NoLinkUnderline>
-    <p>
-      <a href="https://corp.freee.co.jp">freee株式会社</a> では、
-      <a href="https://www.freee.co.jp/houjin/">freee会計</a>や<a href="https://www.freee.co.jp/hr/">
-        freee人事労務
-      </a>といったプロダクトの開発・提供を通して、だれもが自由に自然体で経営できる環境をつくっていきます。
-    </p>
-    <p>
-      freee株式会社では、一緒にスモールビジネスを盛り上げていくエンジニア・デザイナー・プロダクトマネージャーを募集しています
-    </p>
-    <p>
-      <a href="https://jobs.freee.co.jp/">freee株式会社の採用情報</a>
-    </p>
-  </NoLinkUnderline>
-</div>
+<BadVisual />
+
 
 ### リンク先を具体的に表す文言にする
 
@@ -60,25 +31,7 @@ HTML では `<a href="https://www.freee.co.jp">freee株式会社</a>` のよう�
 
 #### 良い例: リンク先が具体的に書かれている
 
-<div className={styles.example}>
-  <ul>
-    <li>
-      <a href="https://www.freee.co.jp/kakuteishinkoku/">
-        個人事業主のお客様向けの案内ページ
-      </a>
-    </li>
-    <li>
-      <a href="https://www.freee.co.jp/houjin/">
-        20名以下の法人のお客様向けの案内ページ
-      </a>
-    </li>
-    <li>
-      <a href="https://www.freee.co.jp/special/cloud-erp/professional/">
-        20名以上の法人のお客様向けの案内ページ
-      </a>
-    </li>
-  </ul>
-</div>
+<GoodLabels />
 
 #### 悪い例: リンク先のことが具体的に書かれていない
 
@@ -86,26 +39,7 @@ HTML では `<a href="https://www.freee.co.jp">freee株式会社</a>` のよう�
 
 また、画面を視覚的に捉えているユーザーにとっても、「こちら」とい文字列部分が短いためマウスポインタを合わせてクリックすることが難しい場合があったり、アンダーラインを表示しないようにしている場合にはリンクを見つけづらい場合があったりします。
 
-<div className={styles.example}>
-  <NoLinkUnderline>
-    <ul>
-      <li>
-        個人事業主のお客様向けの案内ページは
-        <a href="https://www.freee.co.jp/kakuteishinkoku/">こちら</a>
-      </li>
-      <li>
-        20名以下の法人のお客様向けの案内ページは
-        <a href="https://www.freee.co.jp/houjin/">こちら</a>
-      </li>
-      <li>
-        20名以上の法人のお客様向けの案内ページは
-        <a href="https://www.freee.co.jp/special/cloud-erp/professional/">
-          こちら
-        </a>
-      </li>
-    </ul>
-  </NoLinkUnderline>
-</div>
+<BadLabels />
 
 ### `<a href="...">` で実装する
 
@@ -122,24 +56,12 @@ HTML では `<a href="https://www.freee.co.jp">freee株式会社</a>` のよう�
 
 #### 良い例: `<a href="...">` で実装されたリンク
 
-<div className={styles.example}>
-  <a href="https://corp.freee.co.jp">freee株式会社</a>
-</div>
+<GoodElement />
 
 #### 悪い例: `href` の無い `<a>` 要素
 
-<div className={styles.example}>
-  <a
-    onClick={() => {
-      location.href = 'https://corp.freee.co.jp';
-    }}
-  >
-    freee株式会社
-  </a>
-</div>
+<BadElementA />
 
 #### 悪い例: `<a>` 要素を使用していない
 
-<div className={styles.example}>
-  <FakeLink href="https://corp.freee.co.jp">freee株式会社</FakeLink>
-</div>
+<BadElementSpan />
