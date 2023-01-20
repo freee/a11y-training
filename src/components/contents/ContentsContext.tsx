@@ -9,8 +9,8 @@ export const ContentsContext = ({
 }): JSX.Element => (
   <MDXProvider
     components={{
-      wrapper: (props: unknown) => (
-        <section className={styles.contentSection} {...props} />
+      wrapper: ({children, ...props}) => (
+        <section className={styles.contentSection} {...props}>{children}</section>
       ),
     }}
   >
