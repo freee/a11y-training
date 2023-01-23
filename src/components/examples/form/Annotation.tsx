@@ -13,9 +13,9 @@ export const AnnotationPassword = (): JSX.Element => (
       <FormItem>
         <label>
           <FormLabel>パスワード</FormLabel>
-          <TextField type="password" />
+          <TextField type="password" aria-describedby="annotaiton-password" />
         </label>
-        <FormAnnotation>8文字以上の英数字で入力してください</FormAnnotation>
+        <FormAnnotation id="annotaiton-password">8文字以上の英数字で入力してください</FormAnnotation>
       </FormItem>
     </form>
   </ExampleContainer>
@@ -31,9 +31,9 @@ export const AnnotationCompany = (): JSX.Element => (
       <FormItem>
         <label>
           <FormLabel>会社名</FormLabel>
-          <TextField type="text" />
+          <TextField type="text" aria-describedby="annotation-company" />
         </label>
-        <FormAnnotation>記入例: freee株式会社</FormAnnotation>
+        <FormAnnotation id="annotation-company" >記入例: freee株式会社</FormAnnotation>
       </FormItem>
     </form>
   </ExampleContainer>

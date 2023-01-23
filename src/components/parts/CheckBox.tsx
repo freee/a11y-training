@@ -1,12 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const CheckBoxWrapper = styled.span`
-  display: inline-block;
+const CheckBoxWrapper = styled.div`
+  display: inline-flex;
   margin-right: 1rem;
-`;
-const CheckBoxInput = styled.input`
-  margin-right: 0.5rem;
+  gap: 0.5rem;
 `;
 
 export const CheckBox = ({
@@ -21,7 +19,7 @@ export const CheckBox = ({
   onChange?: React.ChangeEventHandler;
 }): JSX.Element => (
   <CheckBoxWrapper>
-    <CheckBoxInput type="checkbox" {...props} />
-    {children}
+    <input type="checkbox" {...props} />
+    <div>{children}</div>
   </CheckBoxWrapper>
 );
