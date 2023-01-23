@@ -1,9 +1,9 @@
 import React from 'react';
-import { MDXProvider, MDXProviderComponentsProp } from '@mdx-js/react';
+import { MDXProvider } from '@mdx-js/react';
 import styled from 'styled-components';
 import { Li, Ol, TextLink, Ul } from '../parts';
 
-const components: MDXProviderComponentsProp = {
+const components: React.ComponentProps<typeof MDXProvider>['components'] = {
   a: TextLink,
   p: styled.p`
     margin: 0;

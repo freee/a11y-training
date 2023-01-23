@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@mdx-js/loader": "^2.2.1",
+    "@mdx-js/react": "^2.2.1",
     "@next/mdx": "^11.1.2",
     "@types/styled-components": "^5.1.26",
     "next": "^12.3.4",
