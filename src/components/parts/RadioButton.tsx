@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const RadioButtonWrapper = styled.span`
   display: inline-flex;
   margin-right: 1rem;
-  gap: 0.5rem
+  gap: 0.5rem;
 `;
 
 export const RadioButton = ({
