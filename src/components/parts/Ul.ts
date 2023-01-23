@@ -1,10 +1,8 @@
 import styled from 'styled-components';
-
-export const ExampleContainer = styled.div`
+export const Ul = styled.ul`
   margin: 0;
-  background: #f7f5f5;
-  padding: 1.5rem;
-
+  padding: 0 0 0 1.5em;
+  line-height: 1.5;
   * + & {
     margin-top: 1rem;
   }

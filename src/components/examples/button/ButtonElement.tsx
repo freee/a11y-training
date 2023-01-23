@@ -1,25 +1,29 @@
 import * as React from 'react';
 import { ExampleContainer } from '..';
-import { Button } from './parts/Button';
-import { FakeButton } from './parts/FakeButton';
+import { Button } from '../../parts';
 
-export const ButtonElement = () =>
+export const ButtonElement = (): JSX.Element => (
   <ExampleContainer>
     <Button onClick={() => window.alert('クリックされました')}>送信</Button>
   </ExampleContainer>
+);
 
-export const BadElement = () =>
+export const BadElement = (): JSX.Element => (
   <ExampleContainer>
-    <FakeButton onClick={() => window.alert('クリックされました')}>送信</FakeButton>
+    <Button as="span" onClick={() => window.alert('クリックされました')}>
+      送信
+    </Button>
   </ExampleContainer>
+);
 
-export const BadElementWithGoodRole = () =>
+export const BadElementWithGoodRole = (): JSX.Element => (
   <ExampleContainer>
-    <FakeButton
+    <Button
+      as="span"
       onClick={() => window.alert('クリックされました')}
       role="button"
       tabIndex={0}
-      onKeyDown={(e) => {
+      onKeyDown={(e: React.KeyboardEvent) => {
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault();
           window.alert('クリックされました');
@@ -27,6 +31,6 @@ export const BadElementWithGoodRole = () =>
       }}
     >
       送信
-    </FakeButton>
+    </Button>
   </ExampleContainer>
-
+);

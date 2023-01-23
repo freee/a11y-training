@@ -1,6 +1,6 @@
-import { NoFocusIndicator, IconButton } from '../examples';
+import { NoFocusIndicator, ExampleContainer } from '../examples';
+import { IconButton } from '../parts';
 import { MdContentCopy, MdEdit, MdDelete } from 'react-icons/md';
-import styles from '../../styles/Content.module.css';
 
 ## キーボードで操作してみよう
 
@@ -42,42 +42,42 @@ import styles from '../../styles/Content.module.css';
 
 #### 良い例: ブラウザのフォーカス・インジケーターを使用している
 
-<div className={styles.example}>
+<ExampleContainer>
   <IconButton
     IconComponent={MdEdit}
-    ariaLabel="編集"
+    aria-label="編集"
     onClick={() => window.alert('編集')}
   />
   <IconButton
     IconComponent={MdContentCopy}
-    ariaLabel="コピー"
+    aria-label="コピー"
     onClick={() => window.alert('コピー')}
   />
   <IconButton
     IconComponent={MdDelete}
-    ariaLabel="削除"
+    aria-label="削除"
     onClick={() => window.alert('削除')}
   />
-</div>
+</ExampleContainer>
 
 #### 悪い例: フォーカス・インジケーターが表示されていない
 
-<div className={styles.example}>
+<ExampleContainer>
   <NoFocusIndicator>
     <IconButton
       IconComponent={MdEdit}
-      ariaLabel="編集"
+      aria-label="編集"
       onClick={() => window.alert('編集')}
     />
     <IconButton
       IconComponent={MdContentCopy}
-      ariaLabel="コピー"
+      aria-label="コピー"
       onClick={() => window.alert('コピー')}
     />
     <IconButton
       IconComponent={MdDelete}
-      ariaLabel="削除"
+      aria-label="削除"
       onClick={() => window.alert('削除')}
     />
   </NoFocusIndicator>
-</div>
+</ExampleContainer>

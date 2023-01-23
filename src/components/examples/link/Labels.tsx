@@ -1,48 +1,53 @@
 import * as React from 'react';
-import { NoLinkUnderline } from './parts/NoLinkUnderline';
 import { ExampleContainer } from '..';
+import { TextLink, Ul, Li } from '../../parts';
 
 export const GoodLabels: React.FC = () => (
   <ExampleContainer>
-    <ul>
-      <li>
-        <a href="https://www.freee.co.jp/kakuteishinkoku/">
+    <Ul>
+      <Li>
+        <TextLink href="https://www.freee.co.jp/kakuteishinkoku/">
           個人事業主のお客様向けの案内ページ
-        </a>
-      </li>
-      <li>
-        <a href="https://www.freee.co.jp/houjin/">
+        </TextLink>
+      </Li>
+      <Li>
+        <TextLink href="https://www.freee.co.jp/houjin/">
           20名以下の法人のお客様向けの案内ページ
-        </a>
-      </li>
-      <li>
-        <a href="https://www.freee.co.jp/special/cloud-erp/professional/">
+        </TextLink>
+      </Li>
+      <Li>
+        <TextLink href="https://www.freee.co.jp/special/cloud-erp/professional/">
           20名以上の法人のお客様向けの案内ページ
-        </a>
-      </li>
-    </ul>
+        </TextLink>
+      </Li>
+    </Ul>
   </ExampleContainer>
 );
 
 export const BadLabels: React.FC = () => (
   <ExampleContainer>
-    <NoLinkUnderline>
-      <ul>
-        <li>
-          個人事業主のお客様向けの案内ページは
-          <a href="https://www.freee.co.jp/kakuteishinkoku/">こちら</a>
-        </li>
-        <li>
-          20名以下の法人のお客様向けの案内ページは
-          <a href="https://www.freee.co.jp/houjin/">こちら</a>
-        </li>
-        <li>
-          20名以上の法人のお客様向けの案内ページは
-          <a href="https://www.freee.co.jp/special/cloud-erp/professional/">
-            こちら
-          </a>
-        </li>
-      </ul>
-    </NoLinkUnderline>
+    <Ul>
+      <Li>
+        個人事業主のお客様向けの案内ページは
+        <TextLink noUnderline href="https://www.freee.co.jp/kakuteishinkoku/">
+          こちら
+        </TextLink>
+      </Li>
+      <Li>
+        20名以下の法人のお客様向けの案内ページは
+        <TextLink noUnderline href="https://www.freee.co.jp/houjin/">
+          こちら
+        </TextLink>
+      </Li>
+      <Li>
+        20名以上の法人のお客様向けの案内ページは
+        <TextLink
+          noUnderline
+          href="https://www.freee.co.jp/special/cloud-erp/professional/"
+        >
+          こちら
+        </TextLink>
+      </Li>
+    </Ul>
   </ExampleContainer>
 );

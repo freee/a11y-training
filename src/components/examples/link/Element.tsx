@@ -1,30 +1,35 @@
 import * as React from 'react';
 import { ExampleContainer } from '..';
-import { FakeLink } from './parts/FakeLink';
-import styles from '../../../styles/Examples.module.css';
+import { TextLink } from '../../parts';
 
 export const GoodElement: React.FC = () => (
   <ExampleContainer>
-    <a href="https://corp.freee.co.jp">freee株式会社</a>
+    <TextLink href="https://corp.freee.co.jp">freee株式会社</TextLink>
   </ExampleContainer>
 );
 
 export const BadElementA: React.FC = () => (
   <ExampleContainer>
     {/* eslint-disable-next-line jsx-a11y/anchor-is-valid,jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
-    <a
-      className={styles.FakeLink}
+    <TextLink
       onClick={() => {
         location.href = 'https://corp.freee.co.jp';
       }}
     >
       freee株式会社
-    </a>
+    </TextLink>
   </ExampleContainer>
 );
 
 export const BadElementSpan: React.FC = () => (
   <ExampleContainer>
-    <FakeLink href="https://corp.freee.co.jp">freee株式会社</FakeLink>
+    <TextLink
+      as="span"
+      onClick={() => {
+        location.href = 'https://corp.freee.co.jp';
+      }}
+    >
+      freee株式会社
+    </TextLink>
   </ExampleContainer>
 );

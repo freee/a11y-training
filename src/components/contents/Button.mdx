@@ -1,7 +1,11 @@
-import styles from '../../styles/Content.module.css';
-import { Button, FakeButton, IconButton, FakeIconButton } from '../examples';
-import { ButtonElement, BadElement, BadElementWithGoodRole} from '../examples/button'
-import { MdContentCopy, MdEdit, MdDelete } from 'react-icons/md';
+import {
+  ButtonElement,
+  BadElement,
+  BadElementWithGoodRole,
+  GoodIconButtons,
+  BadIconButtons,
+  Koku,
+} from '../examples/button';
 
 ## ボタン
 
@@ -49,49 +53,16 @@ Web アプリケーションではボタンに文字を表示せず、アイコ�
 
 #### 良い例: アイコンのボタンに `aria-label` による代替テキストがついている
 
-<div className={styles.example}>
-  <IconButton
-    IconComponent={MdEdit}
-    ariaLabel="編集"
-    onClick={() => window.alert('編集')}
-  />
-  <IconButton
-    IconComponent={MdContentCopy}
-    ariaLabel="コピー"
-    onClick={() => window.alert('コピー')}
-  />
-  <IconButton
-    IconComponent={MdDelete}
-    ariaLabel="削除"
-    onClick={() => window.alert('削除')}
-  />
-</div>
+<GoodIconButtons />
 
 #### 悪い例: アイコンのボタンに代替テキストがない
 
 `<button>` 要素による実装であるため、スクリーンリーダーではボタンであることを知覚できますが、何のボタンかを知覚できません。
 
-<div className={styles.example}>
-  <IconButton IconComponent={MdEdit} onClick={() => window.alert('編集')} />
-  <IconButton
-    IconComponent={MdContentCopy}
-    onClick={() => window.alert('コピー')}
-  />
-  <IconButton IconComponent={MdDelete} onClick={() => window.alert('削除')} />
-</div>
+<BadIconButtons />
 
 #### 悪い例: アイコンのボタンが `<span>` で実装されていて、代替テキストがない（虚空）
 
 スクリーンリーダーでは、そこにボタン状のものが存在することすら認識することができません。
 
-<div className={styles.example}>
-  <FakeIconButton IconComponent={MdEdit} onClick={() => window.alert('編集')} />
-  <FakeIconButton
-    IconComponent={MdContentCopy}
-    onClick={() => window.alert('コピー')}
-  />
-  <FakeIconButton
-    IconComponent={MdDelete}
-    onClick={() => window.alert('削除')}
-  />
-</div>
+<Koku />
