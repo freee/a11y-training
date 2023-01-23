@@ -1,6 +1,7 @@
-import React from 'react';
-import styles from '../../styles/Examples.module.css';
+import styled from 'styled-components';
 
-export const NoFocusIndicator: React.FC = ({ children }) => (
-  <div className={styles.NoFocusIndicator}>{children}</div>
-);
+export const NoFocusIndicator = styled.div`
+  * {
+    outline: none;
+  }
+`;

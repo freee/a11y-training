@@ -1,4 +1,5 @@
-import styles from '../../styles/Content.module.css';
+import { ExampleContainer } from '../examples';
+import { TextLink } from '../parts';
 import { publicPath } from '../../utils/publicPath';
 
 ## スクリーンリーダーを使ってみよう
@@ -13,9 +14,9 @@ import { publicPath } from '../../utils/publicPath';
   <dt>Windows</dt>
   <dd>
     ナレーター（OSに標準搭載）、
-    <a href="https://www.nvda.jp/">NVDA</a>、<a href="https://www.aok-net.com/screenreader/">
+    <TextLink href="https://www.nvda.jp/">NVDA</TextLink>、<TextLink href="https://www.aok-net.com/screenreader/">
       PC-Talker
-    </a>、 <a href="http://www.extra.co.jp/jaws/">JAWS</a>など
+    </TextLink>、<TextLink href="http://www.extra.co.jp/jaws/">JAWS</TextLink>など
   </dd>
   <dt>macOS</dt>
   <dd>VoiceOver（OSに標準搭載）</dd>
@@ -88,17 +89,17 @@ freee での PC 向け Web アプリケーションの動作確認には、日�
 
 #### 良い例: 画像に代替テキストが指定されている
 
-<div className={styles.example}>
+<ExampleContainer>
   <img
     src={publicPath('kurobe_dam.jpg')}
     alt="黒部ダムの放水"
     width={300}
     height={400}
   />
-</div>
+</ExampleContainer>
 
 #### 悪い例: 代替テキストの指定がない
 
-<div className={styles.example}>
+<ExampleContainer>
   <img src={publicPath('kurobe_dam.jpg')} width={300} height={400} />
-</div>
+</ExampleContainer>
