@@ -2,11 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 
 const RadioButtonWrapper = styled.span`
-  display: inline-block;
+  display: inline-flex;
   margin-right: 1rem;
-`;
-const RadioButtonInput = styled.input`
-  margin-right: 0.5rem;
+  gap: 0.5rem
 `;
 
 export const RadioButton = ({
@@ -21,7 +19,7 @@ export const RadioButton = ({
   id?: string;
 }): JSX.Element => (
   <RadioButtonWrapper>
-    <RadioButtonInput type="radio" name={name} value={value} id={id} />
-    {children}
+    <input type="radio" name={name} value={value} id={id} />
+    <div>{children}</div>
   </RadioButtonWrapper>
 );
