@@ -58,24 +58,6 @@ Web アプリケーションではボタンに文字を表示せず、アイコ�
 
 <GoodIconButtons />
 
-<ExampleContainer>
-  <IconButton
-    IconComponent={MdEdit}
-    aria-label="編集"
-    onClick={() => window.alert('編集')}
-  />
-  <IconButton
-    IconComponent={MdContentCopy}
-    aria-label="コピー"
-    onClick={() => window.alert('コピー')}
-  />
-  <IconButton
-    IconComponent={MdDelete}
-    aria-label="削除"
-    onClick={() => window.alert('削除')}
-  />
-</ExampleContainer>
-
 #### 悪い例: アイコンのボタンに代替テキストがない
 
 `<button>` 要素による実装であるため、スクリーンリーダーではボタンであることを知覚できますが、何のボタンかを知覚できません。
@@ -97,14 +79,14 @@ Web アプリケーションではボタンに文字を表示せず、アイコ�
 <ExampleContainer>
   <IconButton
     IconComponent={MdFavoriteBorder}
-    ariaLabel="いいね"
-    ariaPressed="false"
+    aria-label="いいね"
+    aria-pressed="false"
     onClick={() => window.alert('いいねしました')}
   />
   <IconButton
     IconComponent={MdFavorite}
-    ariaLabel="いいね"
-    ariaPressed="true"
+    aria-label="いいね"
+    aria-pressed="true"
     onClick={() => window.alert('いいね取消しました')}
   />
 </ExampleContainer>
@@ -115,13 +97,36 @@ Web アプリケーションではボタンに文字を表示せず、アイコ�
 
 <ExampleContainer>
   <IconButton
-    ariaLabel="いいね"
+    aria-label="いいね"
     IconComponent={MdFavoriteBorder}
     onClick={() => window.alert('いいねしました')}
   />
   <IconButton
-    ariaLabel="いいね"
+    aria-label="いいね"
     IconComponent={MdFavorite}
     onClick={() => window.alert('いいね取消しました')}
+  />
+</ExampleContainer>
+
+### アイコンのボタンの説明が重複しない
+
+#### 良い例: 説明が重複しない
+
+<ExampleContainer>
+  <IconButton
+    text="編集"
+    IconComponent={MdEdit}
+    onClick={() => window.alert('編集')}
+  />
+</ExampleContainer>
+
+#### 悪い例: 説明が重複する
+
+<ExampleContainer>
+  <IconButton
+    iconLabel="編集"
+    text="編集"
+    IconComponent={MdEdit}
+    onClick={() => window.alert('編集')}
   />
 </ExampleContainer>

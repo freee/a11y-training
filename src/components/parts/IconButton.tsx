@@ -1,9 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
+import { IconType } from 'react-icons/lib';
 
 const IconButtonStyle = styled.button`
-  display: inline-block;
-  width: 5rem;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 5rem;
   height: 3rem;
   border-radius: 1.5rem;
   border: 0;
@@ -14,7 +18,7 @@ const IconButtonStyle = styled.button`
   transition-property: background-color, border-color, color;
   transition-duration: 0.3s;
   cursor: pointer;
-  padding: 0.5rem 0;
+  padding: 0.5rem 1rem;
   &:hover {
     color: #2864f0;
     border-color: #2864f0;
@@ -22,11 +26,14 @@ const IconButtonStyle = styled.button`
   }
 
   .icon {
-    vertical-align: middle;
-    display: inline-block;
-    width: 2rem;
-    height: 2rem;
-    font-size: 2rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    font-size: 1.5rem;
+  }
+
+  .text {
+    font-size: 1rem;
+    font-weight: bold;
   }
 
   & + & {
@@ -35,13 +42,18 @@ const IconButtonStyle = styled.button`
 `;
 export const IconButton = ({
   IconComponent,
+  text,
+  iconLabel,
   ...props
 }: {
-  IconComponent: React.ComponentType;
+  IconComponent: IconType;
+  text?: string;
+  iconLabel?: string;
 } & React.ComponentProps<typeof IconButtonStyle>): JSX.Element => (
   <IconButtonStyle {...props}>
     <span className="icon">
-      <IconComponent />
+      <IconComponent aria-label={iconLabel} aria-hidden={iconLabel ? undefined : true} />
     </span>
+    {text && <span className="text">{text}</span>}
   </IconButtonStyle>
 );
