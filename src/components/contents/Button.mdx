@@ -6,6 +6,9 @@ import {
   BadIconButtons,
   Koku,
 } from '../examples/button';
+import { IconButton } from '../parts';
+import { ExampleContainer } from '../examples'
+import { MdContentCopy, MdEdit, MdDelete, MdFavorite, MdFavoriteBorder } from 'react-icons/md';
 
 ## ボタン
 
@@ -54,6 +57,36 @@ Web アプリケーションではボタンに文字を表示せず、アイコ�
 #### 良い例: アイコンのボタンに `aria-label` による代替テキストがついている
 
 <GoodIconButtons />
+
+<ExampleContainer>
+  <IconButton
+    IconComponent={MdEdit}
+    aria-label="編集"
+    onClick={() => window.alert('編集')}
+  />
+  <IconButton
+    IconComponent={MdContentCopy}
+    aria-label="コピー"
+    onClick={() => window.alert('コピー')}
+  />
+  <IconButton
+    IconComponent={MdDelete}
+    aria-label="削除"
+    onClick={() => window.alert('削除')}
+  />
+  <IconButton
+    IconComponent={MdFavoriteBorder}
+    aria-label="いいね"
+    aria-pressed="false"
+    onClick={() => window.alert('いいねしました')}
+  />
+  <IconButton
+    IconComponent={MdFavorite}
+    aria-label="いいね"
+    aria-pressed="true"
+    onClick={() => window.alert('いいね取消しました')}
+  />
+</ExampleContainer>
 
 #### 悪い例: アイコンのボタンに代替テキストがない
 
