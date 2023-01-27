@@ -94,8 +94,45 @@ Web アプリケーションではボタンに文字を表示せず、アイコ�
 
 <BadIconButtons />
 
+<ExampleContainer>
+  <IconButton IconComponent={MdEdit} onClick={() => window.alert('編集')} />
+  <IconButton
+    IconComponent={MdContentCopy}
+    onClick={() => window.alert('コピー')}
+  />
+  <IconButton IconComponent={MdDelete} onClick={() => window.alert('削除')} />
+  <IconButton
+    IconComponent={MdFavoriteBorder}
+    onClick={() => window.alert('いいねしました')}
+  />
+  <IconButton
+    IconComponent={MdFavorite}
+    onClick={() => window.alert('いいね取消しました')}
+  />
+</ExampleContainer>
+
 #### 悪い例: アイコンのボタンが `<span>` で実装されていて、代替テキストがない（虚空）
 
 スクリーンリーダーでは、そこにボタン状のものが存在することすら認識することができません。
 
 <Koku />
+
+<ExampleContainer>
+  <IconButton as="span" IconComponent={MdEdit} onClick={() => window.alert('編集')} />
+  <IconButton as="span"
+    IconComponent={MdContentCopy}
+    onClick={() => window.alert('コピー')}
+  />
+  <IconButton as="span"
+    IconComponent={MdDelete}
+    onClick={() => window.alert('削除')}
+  />
+  <IconButton as="span"
+    IconComponent={MdFavoriteBorder}
+    onClick={() => window.alert('いいねしました')}
+  />
+  <IconButton as="span"
+    IconComponent={MdFavorite}
+    onClick={() => window.alert('いいね取消しました')}
+  />
+</ExampleContainer>
