@@ -74,18 +74,6 @@ Web アプリケーションではボタンに文字を表示せず、アイコ�
     aria-label="削除"
     onClick={() => window.alert('削除')}
   />
-  <IconButton
-    IconComponent={MdFavoriteBorder}
-    aria-label="いいね"
-    aria-pressed="false"
-    onClick={() => window.alert('いいねしました')}
-  />
-  <IconButton
-    IconComponent={MdFavorite}
-    aria-label="いいね"
-    aria-pressed="true"
-    onClick={() => window.alert('いいね取消しました')}
-  />
 </ExampleContainer>
 
 #### 悪い例: アイコンのボタンに代替テキストがない
@@ -94,44 +82,45 @@ Web アプリケーションではボタンに文字を表示せず、アイコ�
 
 <BadIconButtons />
 
-<ExampleContainer>
-  <IconButton IconComponent={MdEdit} onClick={() => window.alert('編集')} />
-  <IconButton
-    IconComponent={MdContentCopy}
-    onClick={() => window.alert('コピー')}
-  />
-  <IconButton IconComponent={MdDelete} onClick={() => window.alert('削除')} />
-  <IconButton
-    IconComponent={MdFavoriteBorder}
-    onClick={() => window.alert('いいねしました')}
-  />
-  <IconButton
-    IconComponent={MdFavorite}
-    onClick={() => window.alert('いいね取消しました')}
-  />
-</ExampleContainer>
-
 #### 悪い例: アイコンのボタンが `<span>` で実装されていて、代替テキストがない（虚空）
 
 スクリーンリーダーでは、そこにボタン状のものが存在することすら認識することができません。
 
 <Koku />
 
+### アイコンのボタンの状態がわかるようにする
+
+#### 良い例: ボタンに `aria-pressed` による状態がついている
+
+トグルボタンの「押されています」「押されていません」の状態を知覚できます。
+
 <ExampleContainer>
-  <IconButton as="span" IconComponent={MdEdit} onClick={() => window.alert('編集')} />
-  <IconButton as="span"
-    IconComponent={MdContentCopy}
-    onClick={() => window.alert('コピー')}
+  <IconButton
+    IconComponent={MdFavoriteBorder}
+    ariaLabel="いいね"
+    ariaPressed="false"
+    onClick={() => window.alert('いいねしました')}
   />
-  <IconButton as="span"
-    IconComponent={MdDelete}
-    onClick={() => window.alert('削除')}
+  <IconButton
+    IconComponent={MdFavorite}
+    ariaLabel="いいね"
+    ariaPressed="true"
+    onClick={() => window.alert('いいね取消しました')}
   />
-  <IconButton as="span"
+</ExampleContainer>
+
+#### 悪い例: ボタンに状態がない
+
+ボタンがどういう状態かを知覚できません。
+
+<ExampleContainer>
+  <IconButton
+    ariaLabel="いいね"
     IconComponent={MdFavoriteBorder}
     onClick={() => window.alert('いいねしました')}
   />
-  <IconButton as="span"
+  <IconButton
+    ariaLabel="いいね"
     IconComponent={MdFavorite}
     onClick={() => window.alert('いいね取消しました')}
   />
