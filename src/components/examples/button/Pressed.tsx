@@ -29,12 +29,14 @@ const LikeButton = ({
     setLiked(defaultLiked);
   }, [defaultLiked]);
 
-  React.useEffect(()=>{
+  React.useEffect(() => {
     if (message) {
-      const id = setTimeout(()=>{ setMessage('') }, 5000)
-      return ()=> clearTimeout(id)
+      const id = setTimeout(() => {
+        setMessage('');
+      }, 5000);
+      return () => clearTimeout(id);
     }
-  }, [message])
+  }, [message]);
 
   return (
     <Stack>

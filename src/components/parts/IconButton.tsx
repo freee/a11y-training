@@ -2,7 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import { IconType } from 'react-icons/lib';
 
-const IconButtonStyle = styled.button<{ pressed?: boolean, focusIndicator?: 'browser' | 'specified' | 'none' }>`
+const IconButtonStyle = styled.button<{
+  pressed?: boolean;
+  focusIndicator?: 'browser' | 'specified' | 'none';
+}>`
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -37,12 +40,13 @@ const IconButtonStyle = styled.button<{ pressed?: boolean, focusIndicator?: 'bro
     })}
   }
   &:focus-visible {
-    ${({focusIndicator = 'specified'}) => (
-      {
-        outline: focusIndicator === 'browser' ? undefined : 'none',
-        boxShadow: focusIndicator === 'specified' ? '0 0 0 1px #fff, 0 0 0 4px #73a5ff, 0 0 0 5px #fff' : undefined
-      }
-    )}
+    ${({ focusIndicator = 'specified' }) => ({
+      outline: focusIndicator === 'browser' ? undefined : 'none',
+      boxShadow:
+        focusIndicator === 'specified'
+          ? '0 0 0 1px #fff, 0 0 0 4px #73a5ff, 0 0 0 5px #fff'
+          : undefined,
+    })}
   }
 
   .icon {
