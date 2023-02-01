@@ -53,3 +53,46 @@ export const Koku = (): JSX.Element => (
     />
   </ExampleContainer>
 );
+
+export const IconAndLabel = (): JSX.Element => (
+  <ExampleContainer>
+    <IconButton
+      text="編集"
+      IconComponent={MdEdit}
+      onClick={() => window.alert('編集')}
+    />
+    <IconButton
+      IconComponent={MdContentCopy}
+      text="コピー"
+      onClick={() => window.alert('コピー')}
+    />
+    <IconButton
+      IconComponent={MdDelete}
+      text="削除"
+      onClick={() => window.alert('削除')}
+    />
+  </ExampleContainer>
+);
+
+export const BadIconAndLabel = (): JSX.Element => (
+  <ExampleContainer>
+    <IconButton
+      text="編集"
+      iconLabel="編集"
+      IconComponent={MdEdit}
+      onClick={() => window.alert('編集')}
+    />
+    <IconButton
+      IconComponent={MdContentCopy}
+      text="コピー"
+      iconLabel="コピー"
+      onClick={() => window.alert('コピー')}
+    />
+    <IconButton
+      IconComponent={MdDelete}
+      text="削除"
+      iconLabel="削除"
+      onClick={() => window.alert('削除')}
+    />
+  </ExampleContainer>
+);
