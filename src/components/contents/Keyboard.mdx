@@ -1,4 +1,4 @@
-import { NoFocusIndicator, ExampleContainer } from '../examples';
+import {ExampleContainer } from '../examples';
 import { IconButton } from '../parts';
 import { MdContentCopy, MdEdit, MdDelete } from 'react-icons/md';
 
@@ -47,37 +47,64 @@ import { MdContentCopy, MdEdit, MdDelete } from 'react-icons/md';
     IconComponent={MdEdit}
     aria-label="編集"
     onClick={() => window.alert('編集')}
+    focusIndicator="browser"
   />
   <IconButton
     IconComponent={MdContentCopy}
     aria-label="コピー"
     onClick={() => window.alert('コピー')}
+    focusIndicator="browser"
   />
   <IconButton
     IconComponent={MdDelete}
     aria-label="削除"
     onClick={() => window.alert('削除')}
+    focusIndicator="browser"
+  />
+</ExampleContainer>
+
+#### 良い例: フォーカス・インジケーターを自分で指定している
+
+<ExampleContainer>
+  <IconButton
+    IconComponent={MdEdit}
+    aria-label="編集"
+    onClick={() => window.alert('編集')}
+    focusIndicator="specified"
+  />
+  <IconButton
+    IconComponent={MdContentCopy}
+    aria-label="コピー"
+    onClick={() => window.alert('コピー')}
+    focusIndicator="specified"
+  />
+  <IconButton
+    IconComponent={MdDelete}
+    aria-label="削除"
+    onClick={() => window.alert('削除')}
+    focusIndicator="specified"
   />
 </ExampleContainer>
 
 #### 悪い例: フォーカス・インジケーターが表示されていない
 
 <ExampleContainer>
-  <NoFocusIndicator>
-    <IconButton
-      IconComponent={MdEdit}
-      aria-label="編集"
-      onClick={() => window.alert('編集')}
-    />
-    <IconButton
-      IconComponent={MdContentCopy}
-      aria-label="コピー"
-      onClick={() => window.alert('コピー')}
-    />
-    <IconButton
-      IconComponent={MdDelete}
-      aria-label="削除"
-      onClick={() => window.alert('削除')}
-    />
-  </NoFocusIndicator>
+  <IconButton
+    IconComponent={MdEdit}
+    aria-label="編集"
+    onClick={() => window.alert('編集')}
+    focusIndicator="none"
+  />
+  <IconButton
+    IconComponent={MdContentCopy}
+    aria-label="コピー"
+    onClick={() => window.alert('コピー')}
+    focusIndicator="none"
+  />
+  <IconButton
+    IconComponent={MdDelete}
+    aria-label="削除"
+    onClick={() => window.alert('削除')}
+    focusIndicator="none"
+  />
 </ExampleContainer>
