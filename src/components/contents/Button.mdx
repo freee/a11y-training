@@ -7,10 +7,10 @@ import {
   Koku,
   GoodPressed,
   BadPressed,
+  IconAndLabel,
+  BadIconAndLabel
 } from '../examples/button';
-import { IconButton } from '../parts';
 import { ExampleContainer } from '../examples'
-import { MdContentCopy, MdEdit, MdDelete, MdFavorite, MdFavoriteBorder } from 'react-icons/md';
 
 ## ボタン
 
@@ -72,39 +72,32 @@ Web アプリケーションではボタンに文字を表示せず、アイコ�
 
 <Koku />
 
-### アイコンのボタンの状態がわかるようにする
+### アイコンの説明が重複しない
 
-#### 良い例: ボタンに `aria-pressed` による状態がついている
-
-トグルボタンの「押されていません」「押されています」の状態を知覚できます。
-
-<GoodPressed />
-
-#### 悪い例: ボタンに状態がない
-
-ボタンがどういう状態かを知覚できません。
-
-<BadPressed />
-
-### アイコンのボタンの説明が重複しない
+同じ意味のアイコンとテキストを並べて使用するときは、アイコンには代替テキストを設定しないようにします。代替テキストを設定していると、スクリーンリーダーには「編集 編集」「コピー コピー」「削除 削除」のように重複して読み上げられてしまいます。
 
 #### 良い例: 説明が重複しない
 
-<ExampleContainer>
-  <IconButton
-    text="編集"
-    IconComponent={MdEdit}
-    onClick={() => window.alert('編集')}
-  />
-</ExampleContainer>
+
+
+<IconAndLabel />
 
 #### 悪い例: 説明が重複する
 
-<ExampleContainer>
-  <IconButton
-    iconLabel="編集"
-    text="編集"
-    IconComponent={MdEdit}
-    onClick={() => window.alert('編集')}
-  />
-</ExampleContainer>
+<BadIconAndLabel />
+
+### ボタンの状態がわかるようにする
+
+「押されていない」状態と「押されている」状態のあるボタン（トグルボタン）は、視覚的な変化をつけるだけでなく、 `aria-pressed` を使用して、スクリーンリーダーなどの支援技術でも状態を読み取れるようにする必要があります。
+
+#### 良い例: `aria-pressed` を使って、トグルボタンの状態が表現されている
+
+スクリーンリーダーで、 トグルボタンの「押されていません」「押されています」の状態を知覚できます。
+
+<GoodPressed />
+
+#### 悪い例: トグルボタンの状態は視覚的にしか表現されていない
+
+スクリーンリーダーでは、ボタンがどういう状態かを知覚できません。
+
+<BadPressed />
