@@ -5,6 +5,8 @@ import {
   GoodIconButtons,
   BadIconButtons,
   Koku,
+  GoodPressed,
+  BadPressed,
 } from '../examples/button';
 import { IconButton } from '../parts';
 import { ExampleContainer } from '../examples'
@@ -76,37 +78,13 @@ Web アプリケーションではボタンに文字を表示せず、アイコ�
 
 トグルボタンの「押されていません」「押されています」の状態を知覚できます。
 
-<ExampleContainer>
-  <IconButton
-    IconComponent={MdFavoriteBorder}
-    aria-label="いいね"
-    aria-pressed="false"
-    onClick={() => window.alert('いいねしました')}
-  />
-  <IconButton
-    IconComponent={MdFavorite}
-    aria-label="いいね"
-    aria-pressed="true"
-    onClick={() => window.alert('いいね取消しました')}
-  />
-</ExampleContainer>
+<GoodPressed />
 
 #### 悪い例: ボタンに状態がない
 
 ボタンがどういう状態かを知覚できません。
 
-<ExampleContainer>
-  <IconButton
-    aria-label="いいね"
-    IconComponent={MdFavoriteBorder}
-    onClick={() => window.alert('いいねしました')}
-  />
-  <IconButton
-    aria-label="いいね"
-    IconComponent={MdFavorite}
-    onClick={() => window.alert('いいね取消しました')}
-  />
-</ExampleContainer>
+<BadPressed />
 
 ### アイコンのボタンの説明が重複しない
 
