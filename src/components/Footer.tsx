@@ -14,7 +14,8 @@ const FooterStyle = styled.footer`
 const FooterP = styled.p`
   color: #6e6b6b;
   font-size: 0.75rem;
-  margin: 0; & + & {
+  margin: 0;
+  & + & {
     margin-top: 0.5rem;
   }
 `;
@@ -26,7 +27,7 @@ const FooterA = styled.a`
     color: #23418c;
   }
 `;
-export const Footer = ():JSX.Element => (
+export const Footer = (): JSX.Element => (
   <FooterStyle>
     <FooterP>&copy; freee K.K.</FooterP>
     <FooterP>
