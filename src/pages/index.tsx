@@ -12,6 +12,7 @@ import {
   Button,
   Form,
 } from '../components/contents';
+import { Footer } from '../components/Footer';
 import { publicPath } from '../utils/publicPath';
 
 const Header = styled.header`
@@ -38,31 +39,6 @@ const Main = styled.main`
     padding: 1rem 1rem 0;
   }
 `;
-const Footer = styled.footer`
-  padding: 4rem 4rem 1rem;
-  box-sizing: border-box;
-
-  @media screen and (max-width: 48rem) {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-`;
-const FooterP = styled.p`
-  color: #6e6b6b;
-  font-size: 0.75rem;
-  margin: 0;
-  & + & {
-    margin-top: 0.5rem;
-  }
-`;
-const FooterA = styled.a`
-  color: #6e6b6b;
-  transition-duration: 0.3s;
-  transition-property: color;
-  &:hover {
-    color: #23418c;
-  }
-`;
 
 const Home: NextPage = () => {
   return (
@@ -87,27 +63,7 @@ const Home: NextPage = () => {
           <Form />
         </ContentsContext>
       </Main>
-      <Footer>
-        <FooterP>&copy; freee K.K.</FooterP>
-        <FooterP>
-          <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">
-            <img
-              alt="クリエイティブ・コモンズ・ライセンス"
-              style={{ borderWidth: 0 }}
-              src="https://i.creativecommons.org/l/by/4.0/88x31.png"
-            />
-          </a>
-          <br />
-          このページは
-          <FooterA
-            rel="license"
-            href="http://creativecommons.org/licenses/by/4.0/"
-          >
-            クリエイティブ・コモンズ 表示 4.0 国際 ライセンス
-          </FooterA>
-          の下に提供されています。
-        </FooterP>
-      </Footer>
+      <Footer />
     </>
   );
 };
