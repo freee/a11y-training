@@ -5,8 +5,10 @@ const FooterStyle = styled.footer`
   box-sizing: border-box;
 
   @media screen and (max-width: 48rem) {
-    padding-left: 1rem;
-    padding-right: 1rem;
+    & {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
   }
 `;
 const FooterP = styled.p`
