@@ -15,6 +15,7 @@ const withMDX = require('@next/mdx')({
 const urlPrefix = process.env.URL_PREFIX ? `/${process.env.URL_PREFIX}` : '';
 
 module.exports = withMDX({
+  pageExtensions: ['tsx', 'mdx'],
   reactStrictMode: true,
   assetPrefix: urlPrefix || '/',
   basePath: urlPrefix,
