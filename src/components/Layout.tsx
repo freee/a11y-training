@@ -31,7 +31,6 @@ const Main = styled.main`
   }
 `;
 
-
 export const Layout: React.FC = ({ children }) => (
   <>
     <Head>
