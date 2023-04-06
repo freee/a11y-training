@@ -1,6 +1,8 @@
-import { ExampleContainer } from '../examples';
-import { TextLink } from '../parts';
-import { publicPath } from '../../utils/publicPath';
+import { TextLink } from '/src/components/parts';
+
+import { Title } from '/src/components/Title';
+
+<Title>スクリーンリーダーを使ってみよう</Title>
 
 ## スクリーンリーダーを使ってみよう
 
@@ -75,31 +77,3 @@ freee での PC 向け Web アプリケーションの動作確認には、日�
 
 - NVDA では、ブラウズモードで<kbd>H</kbd>キーまたは<kbd>Shift</kbd>+<kbd>H</kbd>キーを押すことで、前後の見出しにジャンプすることができます
 - macOS の VoiceOver では、<kbd>VoiceOver</kbd>+<kbd>U</kbd>でローターを起動し、<kbd>←</kbd><kbd>→</kbd>キーで「見出しメニュー」に移動、<kbd>↑</kbd><kbd>↓</kbd>キーで見出しを辿ることができます
-
-### 画像の代替テキスト
-
-スクリーンリーダーではテキスト情報しか読み取ることができません。そのため、HTML の `<img>` 要素には、 **代替テキスト** を提供するための `alt` 属性があります。
-
-- ページの文脈にあわせて、画像の内容を説明する簡潔なテキストを代替テキストとして指定してください
-- 画像が装飾目的で配置され、ページの内容を理解するのに不必要な場合は、空の `alt` 属性（`alt=""`）を指定してください
-  - 単なるアイキャッチとしてイラストやアイコンが置かれている場合などが該当します
-  - いかなる場合も、 `img` 要素には `alt` 属性の指定が必要ということになります
-- `<svg>` 要素など、`<img>` 要素以外で画像を扱う場合には `aria-label` 属性や `aria-labelledby` 属性を使用します
-- 代替テキストは、<code>alt</code>属性から、「 **<ruby>alt<rp>(</rp><rt>おると</rt><rp>)</rp></ruby>テキスト** 」と呼ばれることがあります
-
-#### 良い例: 画像に代替テキストが指定されている
-
-<ExampleContainer>
-  <img
-    src={publicPath('kurobe_dam.jpg')}
-    alt="黒部ダムの放水"
-    width={300}
-    height={400}
-  />
-</ExampleContainer>
-
-#### 悪い例: 代替テキストの指定がない
-
-<ExampleContainer>
-  <img src={publicPath('kurobe_dam.jpg')} width={300} height={400} />
-</ExampleContainer>
