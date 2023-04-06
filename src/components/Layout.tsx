@@ -41,16 +41,19 @@ const Container = styled.div`
     display: block;
   }
 `;
-const Navigation = styled.nav `
+const Navigation = styled.nav`
   padding: 2rem 2rem 0;
   min-width: 14rem;
   @media screen and (max-width: 48rem) {
     padding: 1rem 1rem 0;
     min-width: 100%;
   }
-`
+`;
 
-export const Layout: React.FC<{pathname: string}> = ({ children,pathname } ) => (
+export const Layout: React.FC<{ pathname: string }> = ({
+  children,
+  pathname,
+}) => (
   <>
     <Head>
       <link rel="icon" href={publicPath('favicon.ico')} />

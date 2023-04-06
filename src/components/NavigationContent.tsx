@@ -26,13 +26,14 @@ const NavLink = styled.a.attrs(({ current }: { current: boolean }) => ({
   margin-top: 0.5rem;
   position: relative;
   &:before {
-    content: "";
+    content: '';
     position: absolute;
     right: calc(100% + 0.25rem);
     top: calc(50% - 0.25rem);
     border-top: 0.25rem solid transparent;
     border-bottom: 0.25rem solid transparent;
-    border-left: 0.5rem solid ${({current})=> current ? '#aac8ff' : 'transparent'};
+    border-left: 0.5rem solid
+      ${({ current }) => (current ? '#aac8ff' : 'transparent')};
     transition: border-color, 0.2s;
   }
 
@@ -45,7 +46,7 @@ const NavigationData = [
   { title: 'ホーム', pathname: '/' },
   { title: 'キーボードで操作してみよう', pathname: '/keyboard/' },
   { title: 'スクリーンリーダーを使ってみよう', pathname: '/screen-reader/' },
-  { title: '画像', pathname: '/image/'},
+  { title: '画像', pathname: '/image/' },
   { title: 'リンク', pathname: '/link/' },
   { title: 'ボタン', pathname: '/button/' },
   { title: 'フォーム', pathname: '/form/' },
