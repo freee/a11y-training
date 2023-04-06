@@ -2,9 +2,15 @@ import React from 'react';
 import { MDXProvider } from '@mdx-js/react';
 import styled from 'styled-components';
 import { Li, Ol, TextLink, Ul } from '../parts';
+import Link from 'next/link';
 
 const components: React.ComponentProps<typeof MDXProvider>['components'] = {
-  a: TextLink,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  a: ({ href, ref, ...props }) => (
+    <Link passHref={true} href={href || ''}>
+      <TextLink {...props} />
+    </Link>
+  ),
   p: styled.p`
     margin: 0;
     font-size: 1rem;

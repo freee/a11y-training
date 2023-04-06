@@ -5,6 +5,7 @@ import { Settings } from './Settings';
 import { Footer } from './Footer';
 import { ContentsContext } from './contents';
 import { publicPath } from '../utils/publicPath';
+import { NavigationContent } from './NavigationContent';
 
 const Header = styled.header`
   padding: 1rem 4rem;
@@ -31,7 +32,25 @@ const Main = styled.main`
   }
 `;
 
-export const Layout: React.FC = ({ children }) => (
+const Container = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: start;
+  @media screen and (max-width: 48rem) {
+    display: block;
+  }
+`;
+const Navigation = styled.nav `
+  padding: 2rem 2rem 0;
+  min-width: 14rem;
+  @media screen and (max-width: 48rem) {
+    padding: 1rem 1rem 0;
+    min-width: 100%;
+  }
+`
+
+export const Layout: React.FC<{pathname: string}> = ({ children,pathname } ) => (
   <>
     <Head>
       <link rel="icon" href={publicPath('favicon.ico')} />
@@ -40,9 +59,14 @@ export const Layout: React.FC = ({ children }) => (
       <HeaderTitle>freee Accessibility Training</HeaderTitle>
     </Header>
     <Settings />
-    <Main>
-      <ContentsContext>{children}</ContentsContext>
-    </Main>
+    <Container>
+      <Main>
+        <ContentsContext>{children}</ContentsContext>
+      </Main>
+      <Navigation>
+        <NavigationContent pathname={pathname} />
+      </Navigation>
+    </Container>
     <Footer />
   </>
 );
