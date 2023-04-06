@@ -21,7 +21,7 @@ const NavLink = styled.a.attrs(({ current }: { current: boolean }) => ({
   padding: 0.25rem 0.5rem;
   color: #285ac8;
   text-decoration: none;
-  transition: background-color, 0.2s;
+  transition: background-color 0.2s;
   border-radius: 0.25rem;
   margin-top: 0.5rem;
   position: relative;
@@ -34,7 +34,7 @@ const NavLink = styled.a.attrs(({ current }: { current: boolean }) => ({
     border-bottom: 0.25rem solid transparent;
     border-left: 0.5rem solid
       ${({ current }) => (current ? '#aac8ff' : 'transparent')};
-    transition: border-color, 0.2s;
+    transition: border-color 0.2s;
   }
 
   &:hover {
