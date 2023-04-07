@@ -12,3 +12,20 @@ body {
 * {
   box-sizing: border-box;
 }
+
+.hamburgermenu {
+  background: #ccc;
+  overflow: hidden;
+  white-space: nowrap;
+  transition: width 0.5s;
+}
+
+/* ハンバーガーメニューが閉じているときには幅を0にする */
+.hamburgermenu:not(.expanded) {
+  width: 0;
+}
+
+/* ハンバーガーメニューが開いたときに幅を指定する。アニメーションでせり出すように見える */
+.hamburgermenu.expanded {
+  width: 200px;
+}
