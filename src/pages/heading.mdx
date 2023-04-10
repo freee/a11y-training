@@ -1,0 +1,26 @@
+import { ExampleContainer } from '/src/components/examples';
+import { Title } from '/src/components/Title';
+
+<Title>見出し</Title>
+
+## 見出し
+
+### 良い例
+
+<ExampleContainer>
+    <h4>アンパンマンと仲間たち</h4>
+    <h5>アンパンマン</h5>
+    <h5>ジャムおじさん</h5>
+    <h4>敵キャラクター</h4>
+    <h5>ばいきんまん</h5>
+</ExampleContainer>
+
+### 悪い例
+
+<ExampleContainer>
+    <div style={{fontWeight:"bold", marginBlockStart:"1.33em", marginBlockEnd:"1.33em"}}>アンパンマンと仲間たち</div>
+    <h5>アンパンマン</h5>
+    <h5>ジャムおじさん</h5>
+    <div style={{fontWeight:"bold", marginBlockStart:"1.33em", marginBlockEnd:"1.33em"}}>敵キャラクター</div>
+    <h5>ばいきんまん</h5>
+</ExampleContainer>

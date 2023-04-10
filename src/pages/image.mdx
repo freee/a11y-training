@@ -1,6 +1,8 @@
 import { ExampleContainer } from '/src/components/examples';
 import { publicPath } from '/src/utils/publicPath';
 import { Title } from '/src/components/Title';
+import { IconWrapper } from '/src/components/parts/IconWrapper';
+import { MdLightbulb } from 'react-icons/md';
 
 <Title>画像</Title>
 
@@ -34,4 +36,40 @@ Web ページでは多くの画像が使われます。画像のようにテキ�
 
 <ExampleContainer>
   <img src={publicPath('kurobe_dam.jpg')} width={300} height={400} />
+</ExampleContainer>
+
+### 情報や機能性を持たない画像
+
+#### 良い例
+
+<ExampleContainer>
+  <h4><IconWrapper> <MdLightbulb /> </IconWrapper> 毎日のルーティンを見直して新しい自分を発見しましょう！</h4>
+</ExampleContainer>
+
+#### 悪い例
+
+<ExampleContainer>
+  <h4><IconWrapper> <MdLightbulb aria-label="電球" /> </IconWrapper> 毎日のルーティンを見直して新しい自分を発見しましょう！</h4>
+</ExampleContainer>
+
+### 画像化されたテキスト
+
+#### 良い例
+
+<ExampleContainer>
+  <img alt="NVDAでアクセシビリティ チェック" src={publicPath('nvdaa11ycheck.png')} width={417} height={56} />
+</ExampleContainer>
+
+#### 悪い例
+
+##### 悪い例 1
+
+<ExampleContainer>
+  <img src={publicPath('nvdaa11ycheck.png')} width={417} height={56} />
+</ExampleContainer>
+
+##### 悪い例 2
+
+<ExampleContainer>
+  <img alt="VoiceOver でアクセシビリティ チェック" src={publicPath('nvdaa11ycheck.png')} width={417} height={56} />
 </ExampleContainer>
