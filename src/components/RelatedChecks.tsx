@@ -1,18 +1,18 @@
 // RelatedChecks.tsx
-import React, { ReactNode } from 'react';
+import React from 'react';
 
 type RelatedChecksProps = {
-  children: ReactNode;
+  ids: string[];
   headerText?: string;
   headerLevel?: number;
   baseURL?: string;
-}
+};
 
 const RelatedChecks: React.FC<RelatedChecksProps> = ({
-  children,
-  headerText = '関連するチェック内容',
+  ids,
+  headerText = '関連するチェック',
   headerLevel = 4,
-  baseURL = 'https://a11y-guidelines.freee.co.jp/checks/checklist.html#check-'
+  baseURL = 'https://a11y-guidelines.freee.co.jp/checks/checklist.html#check-',
 }) => {
   const HeaderTag = `h${headerLevel}` as keyof JSX.IntrinsicElements;
 
@@ -20,31 +20,14 @@ const RelatedChecks: React.FC<RelatedChecksProps> = ({
     <div>
       <HeaderTag>{headerText}</HeaderTag>
       <ul>
-        {React.Children.map(children, (child) => {
-          if (child && typeof child === 'object' && 'type' in child && child.type.displayName === 'Check') {
-            const href = `${baseURL}${child.props.id}`;
-            return (
-              <li>
-                <a href={href}>チェックID：{child.props.id}</a>
-              </li>
-            );
-          }
-          return null;
-        })}
+        {ids.map((id) => (
+          <li key={id}>
+            <a href={`${baseURL}${id}`}>チェックID：{id}</a>
+          </li>
+        ))}
       </ul>
     </div>
   );
 };
 
-type CheckProps = {
-  id: string;
-  children?: ReactNode;
-}
-
-const Check: React.FC<CheckProps> = ({ id, children }) => {
-  return <>{children}</>;
-};
-
-Check.displayName = 'Check';
-
-export { RelatedChecks, Check };
+export { RelatedChecks };
