@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-export const H2 = styled.h2.attrs(()=>({tabIndex: -1}))`
+export const H2 = styled.h2.attrs(() => ({ tabIndex: -1 }))`
   margin: 0 0 1rem;
   font-size: 2rem;
   font-weight: normal;
@@ -22,7 +22,6 @@ export const H2 = styled.h2.attrs(()=>({tabIndex: -1}))`
   &:focus-visible {
     &:before {
       border-left-color: #aac8ff;
-
     }
   }
 `;

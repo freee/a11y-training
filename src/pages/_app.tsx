@@ -13,7 +13,11 @@ function MyApp({
 
   useEffect(() => {
     if (renderedRef.current && ref.current) {
-      ((ref.current.querySelector('[tabindex], a, button, input, select, textarea') || ref.current) as HTMLElement).focus()
+      (
+        (ref.current.querySelector(
+          '[tabindex], a, button, input, select, textarea'
+        ) || ref.current) as HTMLElement
+      ).focus();
     }
     renderedRef.current = true;
   }, [asPath]);
