@@ -38,6 +38,17 @@ Web ページでは多くの画像が使われます。画像のようにテキ�
   <img src={publicPath('kurobe_dam.jpg')} width={300} height={400} />
 </ExampleContainer>
 
+#### 悪い例: 代替テキストが間違っている
+
+<ExampleContainer>
+  <img
+    src={publicPath('kurobe_dam.jpg')}
+    alt="かわいい猫の写真"
+    width={300}
+    height={400}
+  />
+</ExampleContainer>
+
 ### 情報や機能性を持たない画像
 
 #### 良い例
