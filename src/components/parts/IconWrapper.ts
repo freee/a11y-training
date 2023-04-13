@@ -7,5 +7,5 @@ export const IconWrapper = styled.span`
   height: 1.5rem;
   font-size: 1.5rem;
   margin-right: 0.5rem;
-  color: blue;
+  color: #2864f0;
 `;

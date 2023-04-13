@@ -5,7 +5,13 @@ import { Title } from '/src/components/Title';
 
 ## 見出し
 
-### 良い例
+### 適切な見出しレベルを指定する
+
+Webページ内に適切に見出しを設定することで、ユーザーはページの構成を素早く理解することができます。
+
+さらに、`<h1>` 〜 `<h6>` 要素でマークアップすることで、スクリーンリーダーの利用者も見出しによってページの構成を読み取ったり、読みたい部分の見出しへジャンプすることができるようになります。
+
+#### 良い例: 見出しが適切にマークアップされている
 
 <ExampleContainer>
     <h4>アンパンマンと仲間たち</h4>
@@ -15,7 +21,7 @@ import { Title } from '/src/components/Title';
     <h5>ばいきんまん</h5>
 </ExampleContainer>
 
-### 悪い例
+#### 悪い例: 見出しが適切にマークアップされておらず、見出しとして認識できない箇所がある
 
 <ExampleContainer>
     <div style={{fontWeight:"bold", marginBlockStart:"1.33em", marginBlockEnd:"1.33em"}}>アンパンマンと仲間たち</div>
