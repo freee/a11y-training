@@ -1,7 +1,7 @@
 import { ExampleContainer } from '/src/components/examples';
 import { publicPath } from '/src/utils/publicPath';
 import { Title } from '/src/components/Title';
-import { IconWrapper } from '/src/components/parts/IconWrapper';
+import { IconWrapper, H4 } from '/src/components/parts';
 import { MdLightbulb } from 'react-icons/md';
 import Head from 'next/head';
 
@@ -56,17 +56,26 @@ Web ページでは多くの画像が使われます。画像のようにテキ�
 
 `<img>` 要素では `alt=""` （`alt` 属性を空にする）、`<svg>` 要素では `aria-hidden="true"` をつけるなどして、スクリーンリーダーを使う人からは無視されるようにする必要があります。
 
-
 #### 良い例: 意味を持たないアイコンがスクリーンリーダーから無視されるようになっている
 
 <ExampleContainer>
-  <h4><IconWrapper><MdLightbulb aria-hidden="true" /></IconWrapper>毎日のルーティンを見直して新しい自分を発見しましょう！</h4>
+  <H4>
+    <IconWrapper>
+      <MdLightbulb aria-hidden="true" />
+    </IconWrapper>
+    <span>毎日のルーティンを見直して新しい自分を発見しましょう！</span>
+  </H4>
 </ExampleContainer>
 
 #### 悪い例: 意味をもたないアイコンに代替テキストが付与されている
 
 <ExampleContainer>
-  <h4><IconWrapper><MdLightbulb aria-label="電球" /></IconWrapper>毎日のルーティンを見直して新しい自分を発見しましょう！</h4>
+  <H4>
+    <IconWrapper>
+      <MdLightbulb aria-label="電球" />
+    </IconWrapper>
+    <span>毎日のルーティンを見直して新しい自分を発見しましょう！</span>
+  </H4>
 </ExampleContainer>
 
 ### 画像化されたテキスト
@@ -79,22 +88,37 @@ Web ページでは多くの画像が使われます。画像のようにテキ�
 どうしても画像化されたテキストを使う必要がある場合には、ほかの画像と同じく代替テキストを正しく指定するようにしてください。
 
 #### 良い例: 画像化されたテキストを使用していない
+
 <Head>
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@900&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@900&display=swap"
+    rel="stylesheet"
+  />
 </Head>
 
 <ExampleContainer>
-  <div style={{background: '#fff', padding: '0.75rem', width: 'fit-content'}}>
-    <span style={{fontSize: '1.5rem', fontWeight:'bold', fontFamily:"'Noto Sans JP', sans-serif"}}>NVDA でアクセシビリティ チェック</span>
+  <div style={{ background: '#fff', padding: '0.75rem', width: 'fit-content',
+        fontSize: '1.5rem',
+        fontWeight: 'bold',
+        fontFamily: "'Noto Sans JP', sans-serif",
+}}>
+
+<span>NVDA でアクセシビリティ チェック</span>
+
   </div>
 </ExampleContainer>
 
 #### 良い例: 画像化されたテキストに書かれた文字が、代替テキストにも指定されている
 
 <ExampleContainer>
-  <img alt="NVDAでアクセシビリティ チェック" src={publicPath('nvdaa11ycheck.png')} width={417} height={56} />
+  <img
+    alt="NVDAでアクセシビリティ チェック"
+    src={publicPath('nvdaa11ycheck.png')}
+    width={417}
+    height={56}
+  />
 </ExampleContainer>
 
 #### 悪い例: 画像化されたテキストに代替テキストがない
@@ -106,5 +130,10 @@ Web ページでは多くの画像が使われます。画像のようにテキ�
 #### 悪い例: 画像化されたテキストの代替テキストが間違っている
 
 <ExampleContainer>
-  <img alt="VoiceOver でアクセシビリティ チェック" src={publicPath('nvdaa11ycheck.png')} width={417} height={56} />
+  <img
+    alt="VoiceOver でアクセシビリティ チェック"
+    src={publicPath('nvdaa11ycheck.png')}
+    width={417}
+    height={56}
+  />
 </ExampleContainer>

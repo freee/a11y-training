@@ -1,7 +1,7 @@
 import React from 'react';
 import { MDXProvider } from '@mdx-js/react';
 import styled from 'styled-components';
-import { Li, Ol, TextLink, Ul } from '../parts';
+import { H2, H3, H4, Li, Ol, TextLink, Ul } from '../parts';
 import Link from 'next/link';
 
 const components: React.ComponentProps<typeof MDXProvider>['components'] = {
@@ -19,31 +19,9 @@ const components: React.ComponentProps<typeof MDXProvider>['components'] = {
       margin-top: 1rem;
     }
   `,
-  h2: styled.h2`
-    margin: 0 0 1rem;
-    font-size: 2rem;
-    font-weight: normal;
-    line-height: 1.5;
-  `,
-  h3: styled.h3`
-    margin: 0 0 1rem;
-    font-size: 1.5rem;
-    font-weight: normal;
-    line-height: 1.5;
-    * + & {
-      margin-top: 2rem;
-    }
-  `,
-  h4: styled.h4`
-    margin: 0 0 1rem;
-    font-size: 1rem;
-    font-weight: bold;
-    line-height: 1.5;
-
-    * + & {
-      margin-top: 1.5rem;
-    }
-  `,
+  h2: H2,
+  h3: H3,
+  h4: H4,
   ul: Ul,
   ol: Ol,
   li: Li,
