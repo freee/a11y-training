@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode, forwardRef } from 'react';
 import styled from 'styled-components';
 import Head from 'next/head';
 import { Settings } from './Settings';
@@ -50,10 +50,10 @@ const Navigation = styled.nav`
   }
 `;
 
-export const Layout: React.FC<{ pathname: string }> = ({
-  children,
-  pathname,
-}) => (
+export const LayoutFunc: React.ForwardRefRenderFunction<
+  HTMLElement,
+  { pathname: string; children: ReactNode }
+> = ({ children, pathname }, ref) => (
   <>
     <Head>
       <link rel="icon" href={publicPath('favicon.ico')} />
@@ -63,7 +63,7 @@ export const Layout: React.FC<{ pathname: string }> = ({
     </Header>
     <Settings />
     <Container>
-      <Main>
+      <Main ref={ref} tabIndex={-1}>
         <ContentsContext>{children}</ContentsContext>
       </Main>
       <Navigation>
@@ -73,3 +73,5 @@ export const Layout: React.FC<{ pathname: string }> = ({
     <Footer />
   </>
 );
+
+export const Layout = forwardRef(LayoutFunc);
