@@ -1,0 +1,33 @@
+import { ExampleContainer } from '/src/components/examples';
+import { Title } from '/src/components/Title';
+import { H4, H5 } from '/src/components/parts';
+
+<Title>見出し</Title>
+
+## 見出し
+
+### 適切な見出しレベルを指定する
+
+Web ページ内に適切に見出しを設定することで、ユーザーはページの構成を素早く理解することができます。
+
+さらに、`<h1>` 〜 `<h6>` 要素でマークアップすることで、スクリーンリーダーの利用者も見出しによってページの構成を読み取ったり、読みたい部分の見出しへジャンプすることができるようになります。
+
+#### 良い例: 見出しが適切にマークアップされている
+
+<ExampleContainer>
+  <H4>アンパンマンと仲間たち</H4>
+  <H5>アンパンマン</H5>
+  <H5>ジャムおじさん</H5>
+  <H4>敵キャラクター</H4>
+  <H5>ばいきんまん</H5>
+</ExampleContainer>
+
+#### 悪い例: 見出しが適切にマークアップされておらず、見出しとして認識できない箇所がある
+
+<ExampleContainer>
+  <H4 as="div">アンパンマンと仲間たち</H4>
+  <H5>アンパンマン</H5>
+  <H5>ジャムおじさん</H5>
+  <H4 as="div">敵キャラクター</H4>
+  <H5>ばいきんまん</H5>
+</ExampleContainer>
