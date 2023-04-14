@@ -50,6 +50,7 @@ const NavigationData = [
   { title: 'リンク', pathname: '/link/' },
   { title: 'ボタン', pathname: '/button/' },
   { title: 'フォーム', pathname: '/form/' },
+  { title: '見出し', pathname: '/heading/' },
   { title: 'メニュー', pathname: '/menu/' },
 ];
 
