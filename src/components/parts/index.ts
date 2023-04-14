@@ -10,6 +10,7 @@ export * from './H5';
 export * from './IconButton';
 export * from './IconWrapper';
 export * from './RadioButton';
+export * from './RelatedChecks';
 export * from './TextField';
 export * from './TextLink';
 export * from './Ul';
