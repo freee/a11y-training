@@ -1,6 +1,21 @@
-import React, {
-    useState,
-} from "react";
+import React, { useState } from "react";
+import styled from 'styled-components';
+
+export const HamburgerStyle = styled.div`
+    .hamburgermenu {
+        background: #ccc;
+        overflow: hidden;
+        transition: width 0.5s;
+    }
+    // ハンバーガーメニューが閉じているときには幅を0にする
+    .hamburgermenu:not(.expanded) {
+        width: 0;
+    }
+    // ハンバーガーメニューが開いたときに幅を指定する。アニメーションでせり出すように見える
+    .hamburgermenu.expanded {
+        width: 200px;
+    }
+`;
 
 export const HamburgerMenu: React.FC = () => {
     // 開閉状態を管理するステート
@@ -25,7 +40,7 @@ export const HamburgerMenu: React.FC = () => {
     };
 
     return (
-        <>
+        <HamburgerStyle>
             <button
                 type="button"
                 className="button"
@@ -58,6 +73,6 @@ export const HamburgerMenu: React.FC = () => {
                 <li>メニューアイテム4</li>
                 </ul>
             </nav>
-        </>
+        </HamburgerStyle>
     );
 };
