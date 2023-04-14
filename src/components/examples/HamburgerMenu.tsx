@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 export const HamburgerStyle = styled.div`
@@ -61,7 +61,7 @@ export const HamburgerMenu: React.FC = () => {
                 </svg>
             </button>
             <nav
-                className={`hamburgermenu${isExpanded ? " expanded" : ""}`}
+                className={`hamburgermenu${isExpanded ? ' expanded' : ''}`}
                 onTransitionEnd={handleTransitionEnd}
                 hidden={isHidden}
                 id="hamburgermenu"

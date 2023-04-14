@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 export const HamburgerStyle = styled.div`
@@ -44,7 +44,7 @@ export const BadHamburgerMenu: React.FC = () => {
                 </svg>
             </button>
             <nav
-                className={`hamburgermenu${isExpanded ? " expanded" : ""}`}
+                className={`hamburgermenu${isExpanded ? ' expanded' : ''}`}
             >
                 <ul>
                 <li><a href="/keyboard/">キーボードで操作</a></li>
