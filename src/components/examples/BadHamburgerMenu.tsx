@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 export const HamburgerStyle = styled.div`
     .hamburgermenu {
-        background: #ccc;
+        background: #dfdfdf;
         overflow: hidden;
         white-space: nowrap;
         transition: width 0.5s;
@@ -47,10 +47,10 @@ export const BadHamburgerMenu: React.FC = () => {
                 className={`hamburgermenu${isExpanded ? " expanded" : ""}`}
             >
                 <ul>
-                <li>メニューアイテム1</li>
-                <li>メニューアイテム2</li>
-                <li>メニューアイテム3</li>
-                <li>メニューアイテム4</li>
+                <li><a href="/keyboard/">キーボードで操作</a></li>
+                <li><a href="/screen-reader/">スクリーンリーダー</a></li>
+                <li><a href="/image/">画像</a></li>
+                <li><a href="/heading/">見出し</a></li>
                 </ul>
             </nav>
         </HamburgerStyle>
