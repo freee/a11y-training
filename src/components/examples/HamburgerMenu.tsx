@@ -37,7 +37,6 @@ export const HamburgerMenu: React.FC = () => {
     const handleTransitionEnd = () => {
         // アニメーションが終了しメニューが閉じたとき（isExpandedがfalseのとき）、hidden属性の値をtrueにする
         !isExpanded && setHidden(true);
-        // d3;
     };
 
     return (
