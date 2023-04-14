@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 export const HamburgerStyle = styled.div`
     .hamburgermenu {
-        background: #ccc;
+        background: #dfdfdf;
         overflow: hidden;
         white-space: nowrap;
         transition: width 0.5s;
@@ -47,7 +47,8 @@ export const HamburgerMenu: React.FC = () => {
                 className="button"
                 onClick={handleClick}
                 aria-expanded={isExpanded}
-                aria-controls="menu"
+                aria-controls="hamburgermenu"
+                aria-haspopup="menu"
             >
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -55,7 +56,7 @@ export const HamburgerMenu: React.FC = () => {
                     viewBox="0 96 960 960"
                     width="48"
                     role="img"
-                    aria-label="メニュー"
+                    aria-label="目次"
                 >
                     <path d="M120 816v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z" />
                 </svg>
@@ -64,14 +65,14 @@ export const HamburgerMenu: React.FC = () => {
                 className={`hamburgermenu${isExpanded ? " expanded" : ""}`}
                 onTransitionEnd={handleTransitionEnd}
                 hidden={isHidden}
-                id="menu"
-                aria-label="メインメニュー"
+                id="hamburgermenu"
+                aria-label="目次"
             >
                 <ul>
-                <li>メニューアイテム1</li>
-                <li>メニューアイテム2</li>
-                <li>メニューアイテム3</li>
-                <li>メニューアイテム4</li>
+                <li><a href="/keyboard/">キーボードで操作</a></li>
+                <li><a href="/screen-reader/">スクリーンリーダー</a></li>
+                <li><a href="/image/">画像</a></li>
+                <li><a href="/heading/">見出し</a></li>
                 </ul>
             </nav>
         </HamburgerStyle>
