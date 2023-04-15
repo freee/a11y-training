@@ -37,7 +37,7 @@ const RelatedChecks: React.FC<RelatedChecksProps> = ({
     }
   };
   return (
-    <div>
+    <>
       {renderHeader()}
       <Ul>
         {ids.map((id) => (
@@ -46,7 +46,7 @@ const RelatedChecks: React.FC<RelatedChecksProps> = ({
           </Li>
         ))}
       </Ul>
-    </div>
+    </>
   );
 };
 
