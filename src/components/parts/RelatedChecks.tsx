@@ -1,12 +1,6 @@
 // RelatedChecks.tsx
 import React from 'react';
-import { Ul } from './Ul';
-import { Li } from './Li';
-import { TextLink } from './TextLink';
-import { H2 } from './H2';
-import { H3 } from './H3';
-import { H4 } from './H4';
-import { H5 } from './H5';
+import { Ul, Li, TextLink, H2, H3, H4, H5 } from '.';
 
 type RelatedChecksProps = {
   ids: string[];
