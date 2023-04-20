@@ -76,7 +76,6 @@ const NavigationData = [
     ],
   },
   { title: 'アクセシビリティチェックの練習ページ', pathname: '/practice/' },
-  { title: 'メニュー', pathname: '/menu/' },
 ];
 
 const isCurrent = (currentPathname: string, linkPathname: string) =>

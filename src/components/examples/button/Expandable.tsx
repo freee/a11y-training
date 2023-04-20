@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { ExampleContainer } from '..';
 import styled from 'styled-components';
 
 export const HamburgerStyle = styled.div`
@@ -18,7 +19,7 @@ export const HamburgerStyle = styled.div`
     }
 `;
 
-export const HamburgerMenu: React.FC = () => {
+const HamburgerMenu: React.FC = () => {
     // 開閉状態を管理するステート
     const [isExpanded, setExpanded] = useState(false);
     // 完全に閉じた状態を管理するステート
@@ -68,12 +69,63 @@ export const HamburgerMenu: React.FC = () => {
                 aria-label="目次"
             >
                 <ul>
-                <li><a href="/keyboard/">キーボードで操作</a></li>
-                <li><a href="/screen-reader/">スクリーンリーダー</a></li>
-                <li><a href="/image/">画像</a></li>
-                <li><a href="/heading/">見出し</a></li>
+                    <li><a href="/keyboard/">キーボードで操作</a></li>
+                    <li><a href="/screen-reader/">スクリーンリーダー</a></li>
+                    <li><a href="/image/">画像</a></li>
+                    <li><a href="/heading/">見出し</a></li>
                 </ul>
             </nav>
         </HamburgerStyle>
     );
 };
+
+const BadHamburgerMenu: React.FC = () => {
+    // 開閉状態を管理するステート
+    const [isExpanded, setExpanded] = useState(false);
+
+    const handleClick = () => {
+        // クリックしたときに開閉状態を切り替える
+        setExpanded(!isExpanded);
+    };
+
+    return (
+        <HamburgerStyle>
+            <button
+                type="button"
+                className="button"
+                onClick={handleClick}
+            >
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="48"
+                    viewBox="0 96 960 960"
+                    width="48"
+                >
+                    <path d="M120 816v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z" />
+                </svg>
+            </button>
+            <nav
+                className={`hamburgermenu${isExpanded ? ' expanded' : ''}`}
+            >
+                <ul>
+                    <li><a href="/keyboard/">キーボードで操作</a></li>
+                    <li><a href="/screen-reader/">スクリーンリーダー</a></li>
+                    <li><a href="/image/">画像</a></li>
+                    <li><a href="/heading/">見出し</a></li>
+                </ul>
+            </nav>
+        </HamburgerStyle>
+    );
+};
+
+export const GoodExpandableButton = (): JSX.Element => (
+    <ExampleContainer>
+        <HamburgerMenu />
+    </ExampleContainer>
+);
+
+export const BadExpandableButton = (): JSX.Element => (
+    <ExampleContainer>
+        <BadHamburgerMenu />
+    </ExampleContainer>
+);
