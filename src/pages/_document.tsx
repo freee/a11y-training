@@ -10,7 +10,7 @@ import Document, {
 import { ServerStyleSheet } from 'styled-components';
 
 const MyDocument = (): JSX.Element => (
-  <Html lang="ja">
+  <Html>
     <Head />
     <body>
       <Main />
