@@ -111,7 +111,7 @@ const HamburgerMenu: React.FC = () => {
                     <path d="M120 816v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z" fill="currentColor" />
                 </Svg>
             </MyButton>
-            <nav
+            <div
                 className={`hamburgermenu${isExpanded ? ' expanded' : ''}`}
                 onTransitionEnd={handleTransitionEnd}
                 hidden={isHidden}
@@ -119,7 +119,7 @@ const HamburgerMenu: React.FC = () => {
                 aria-label="目次"
             >
                 <MenuItems />
-            </nav>
+            </div>
         </HamburgerStyle>
     );
 };
@@ -149,11 +149,11 @@ const BadHamburgerMenu: React.FC = () => {
                     <path d="M120 816v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z" fill="currentColor" />
                 </Svg>
             </MyButton>
-            <nav
+            <div
                 className={`hamburgermenu${isExpanded ? ' expanded' : ''}`}
             >
                 <MenuItems />
-            </nav>
+            </div>
         </HamburgerStyle>
     );
 };
