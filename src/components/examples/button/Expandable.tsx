@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { ExampleContainer } from '..';
 import styled from 'styled-components';
+import { Button } from '../../parts/Button';
 
 export const HamburgerStyle = styled.div`
+    height: 200px;
     .hamburgermenu {
-        background: #dfdfdf;
+        background: #ffffff;
         overflow: hidden;
         white-space: nowrap;
         transition: width 0.5s;
@@ -18,6 +20,54 @@ export const HamburgerStyle = styled.div`
         width: 200px;
     }
 `;
+
+const NavList = styled.ul`
+    list-style: none;
+    padding: 0 1rem;
+`;
+
+const NavLink = styled.a`
+    display: block;
+    padding: 0.25rem 0.5rem;
+    color: #285ac8;
+    text-decoration: none;
+    transition: background-color 0.2s;
+    border-radius: 0.25rem;
+    margin-top: 0.5rem;
+    position: relative;
+    &:before {
+        content: '';
+        position: absolute;
+        right: calc(100% + 0.25rem);
+        top: calc(50% - 0.25rem);
+        border-top: 0.25rem solid transparent;
+        border-bottom: 0.25rem solid transparent;
+        border-left: 0.5rem solid
+        transition: border-color 0.2s;
+    }
+    &:hover {
+        background-color: #ebf3ff;
+        color: #2864f0;
+    }
+`;
+
+const MyButton = styled(Button)`
+    border-radius: 0.5rem;
+`;
+
+const Svg = styled.svg`
+    color: #2864f0;
+`;
+
+const MenuItems = () => {
+    return (
+        <NavList>
+            <li><NavLink href="https://corp.freee.co.jp/company/">会社概要</NavLink></li>
+            <li><NavLink href="https://corp.freee.co.jp/mission/">ミッション</NavLink></li>
+            <li><NavLink href="https://corp.freee.co.jp/news/">ニュース</NavLink></li>
+        </NavList>
+    );
+};
 
 const HamburgerMenu: React.FC = () => {
     // 開閉状態を管理するステート
@@ -42,7 +92,7 @@ const HamburgerMenu: React.FC = () => {
 
     return (
         <HamburgerStyle>
-            <button
+            <MyButton
                 type="button"
                 className="button"
                 onClick={handleClick}
@@ -50,7 +100,7 @@ const HamburgerMenu: React.FC = () => {
                 aria-controls="hamburgermenu"
                 aria-haspopup="menu"
             >
-                <svg
+                <Svg
                     xmlns="http://www.w3.org/2000/svg"
                     height="48"
                     viewBox="0 96 960 960"
@@ -58,9 +108,9 @@ const HamburgerMenu: React.FC = () => {
                     role="img"
                     aria-label="目次"
                 >
-                    <path d="M120 816v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z" />
-                </svg>
-            </button>
+                    <path d="M120 816v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z" fill="currentColor" />
+                </Svg>
+            </MyButton>
             <nav
                 className={`hamburgermenu${isExpanded ? ' expanded' : ''}`}
                 onTransitionEnd={handleTransitionEnd}
@@ -68,12 +118,7 @@ const HamburgerMenu: React.FC = () => {
                 id="hamburgermenu"
                 aria-label="目次"
             >
-                <ul>
-                    <li><a href="/keyboard/">キーボードで操作</a></li>
-                    <li><a href="/screen-reader/">スクリーンリーダー</a></li>
-                    <li><a href="/image/">画像</a></li>
-                    <li><a href="/heading/">見出し</a></li>
-                </ul>
+                <MenuItems />
             </nav>
         </HamburgerStyle>
     );
@@ -90,29 +135,24 @@ const BadHamburgerMenu: React.FC = () => {
 
     return (
         <HamburgerStyle>
-            <button
+            <MyButton
                 type="button"
                 className="button"
                 onClick={handleClick}
             >
-                <svg
+                <Svg
                     xmlns="http://www.w3.org/2000/svg"
                     height="48"
                     viewBox="0 96 960 960"
                     width="48"
                 >
-                    <path d="M120 816v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z" />
-                </svg>
-            </button>
+                    <path d="M120 816v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z" fill="currentColor" />
+                </Svg>
+            </MyButton>
             <nav
                 className={`hamburgermenu${isExpanded ? ' expanded' : ''}`}
             >
-                <ul>
-                    <li><a href="/keyboard/">キーボードで操作</a></li>
-                    <li><a href="/screen-reader/">スクリーンリーダー</a></li>
-                    <li><a href="/image/">画像</a></li>
-                    <li><a href="/heading/">見出し</a></li>
-                </ul>
+                <MenuItems />
             </nav>
         </HamburgerStyle>
     );
