@@ -1,19 +1,22 @@
-import Link from 'next/link'
 import { Title } from '/src/components/Title';
 
-<Title>適切な言語の音声</Title>
+<Title>適切な言語</Title>
 
-## 適切な言語の音声
+## 適切な言語
 
-<div lang="ja">
-  ### 日本語
-  こんにちは！
+<div style={{marginBottom: "2rem"}}>
+  こんにちは、日本語です。
 </div>
 
-<div lang="en">
-  ### English
-  Hello!
-</div>
-
-- <Link href='/multi-lang' locale='en'><a>日本語ページ lang=en</a></Link>
-- <Link href='/multi-lang' locale='ja'><a>日本語ページ lang=ja</a></Link>
+<ul style={{listStyle: "none", padding: "0"}}>
+  <li>
+    <a href='/ja/multi-lang' style={{textDecoration: "none", color: "#285ac8"}}>
+      良い例としてこのページを表示
+    </a>
+  </li>
+  <li>
+    <a href='/en/multi-lang' style={{textDecoration: "none", color: "#285ac8"}}>
+      悪い例としてこのページを表示
+    </a>
+  </li>
+</ul>
