@@ -1,7 +1,7 @@
 import React from 'react';
 import { MDXProvider } from '@mdx-js/react';
 import styled from 'styled-components';
-import { H2, H3, H4, Li, Ol, TextLink, Ul } from '../parts';
+import { Blockquote, H2, H3, H4, Li, Ol, P, TextLink, Ul } from '../parts';
 import Link from 'next/link';
 
 const components: React.ComponentProps<typeof MDXProvider>['components'] = {
@@ -11,20 +11,14 @@ const components: React.ComponentProps<typeof MDXProvider>['components'] = {
       <TextLink {...props} />
     </Link>
   ),
-  p: styled.p`
-    margin: 0;
-    font-size: 1rem;
-    line-height: 1.5;
-    * + & {
-      margin-top: 1rem;
-    }
-  `,
+  p: P,
   h2: H2,
   h3: H3,
   h4: H4,
   ul: Ul,
   ol: Ol,
   li: Li,
+  blockquote: Blockquote,
   wrapper: styled.section`
     & + & {
       margin-top: 4rem;

@@ -15,3 +15,5 @@ export * from './TextLink';
 export * from './Ul';
 export * from './Ol';
 export * from './Li';
+export * from './P';
+export * from './Blockquote';
