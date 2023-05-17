@@ -51,7 +51,24 @@ const NavigationData = [
   { title: 'ボタン', pathname: '/button/' },
   { title: 'フォーム', pathname: '/form/' },
   { title: '見出し', pathname: '/heading/' },
+  {
+    title: '言語',
+    pathname: '/language/',
+    children: [
+      {
+        title: 'ページの言語の指定が正しい例',
+        pathname: '/language/correct-html-lang/',
+      },
+      {
+        title: 'ページの言語の指定が正しくない例',
+        pathname: '/language/wrong-html-lang/',
+      },
+    ],
+  },
 ];
+
+const isCurrent = (currentPathname: string, linkPathname: string) =>
+  currentPathname.replace(/\/?$/, '/') === linkPathname;
 
 export const NavigationContent = ({
   pathname,
@@ -62,7 +79,7 @@ export const NavigationContent = ({
     <Heading>メニュー</Heading>
     <NavList>
       {NavigationData.map((n) => {
-        const current = pathname.replace(/\/?$/, '/') === n.pathname;
+        const current = isCurrent(pathname, n.pathname);
         return (
           <li key={n.pathname}>
             <Link href={n.pathname} passHref>
@@ -74,6 +91,26 @@ export const NavigationContent = ({
                 {n.title}
               </NavLink>
             </Link>
+            {n.children && (
+              <NavList>
+                {n.children.map((c) => {
+                  const current = isCurrent(pathname, c.pathname);
+                  return (
+                    <li key={c.pathname}>
+                      <Link href={c.pathname} passHref>
+                        <NavLink
+                          href={c.pathname}
+                          aria-current={current ? 'page' : undefined}
+                          current={current}
+                        >
+                          {c.title}
+                        </NavLink>
+                      </Link>
+                    </li>
+                  );
+                })}
+              </NavList>
+            )}
           </li>
         );
       })}

@@ -1,0 +1,59 @@
+import { Title } from '/src/components/Title';
+import { ExampleContainer } from '/src/components/examples';
+
+<Title>言語</Title>
+
+## 言語
+
+Web ページには必ず、そのページが「どの言語で書かれているか」の情報を明示する必要があります。
+これが明示されていることにより、機械翻訳の機能が正しく動作したり、スクリーンリーダーの読み上げが正しく行われることを期待できます。
+
+※ このページで紹介している例は、Windows の「音声認識の設定」にて、英語の音声パッケージを追加した上で、NVDA で試してください。
+
+### ページ全体の言語の指定
+
+ページ全体の言語は、`<html>` 要素の `lang` 属性によって指定します。日本語の場合は `<html lang="ja">` のように指定します。
+
+#### 良い例: ページの言語が正しく指定されている
+
+以下は、日本語のページに `<html lang="ja">` を指定した例です
+
+[ページの言語の指定が正しい例](/language/correct-html-lang/)
+
+#### 悪い例: ページの言語の指定が間違っている
+
+以下は、日本語のページに `<html lang="en">` を指定した例です
+
+[ページの言語の指定が正しくない例](/language/wrong-html-lang/)
+
+### ページ内に複数の言語が含まれる場合の指定
+
+日本語のページ内に英語のような別の言語が含まれる場合は、
+その部分だけに `lang` 属性を指定することで、機械翻訳の成果物やスクリーンリーダーの読み上げがより正しいものになることを期待できます。
+
+#### 良い例: 英語の部分に `lang="en"` を指定している
+
+<ExampleContainer>
+Webの考案者、Tim Berners-Leeは、以下のように言っています：
+
+<div lang="en">
+  > The power of the Web is in its universality. Access by everyone regardless
+  of disability is an essential aspect.
+</div>
+
+適切に `lang` 属性を使うことで、複数の言語が混在しているときの使い勝手が変わってきますが、状況や想定ユーザーに応じて、最善の実装方法が異なることが考えられます。
+
+</ExampleContainer>
+
+#### 悪い例: 日本語の部分に `lang="en"` が指定されている
+
+<ExampleContainer>
+<div lang="en">
+Webの考案者、Tim Berners-Leeは、以下のように言っています：
+
+> The power of the Web is in its universality. Access by everyone regardless of disability is an essential aspect.
+
+適切に `lang` 属性を使うことで、複数の言語が混在しているときの使い勝手が変わってきますが、状況や想定ユーザーに応じて、最善の実装方法が異なることが考えられます。
+
+</div>
+</ExampleContainer>
