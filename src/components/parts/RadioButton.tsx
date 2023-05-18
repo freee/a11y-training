@@ -23,7 +23,14 @@ export const RadioButton = ({
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
 }): JSX.Element => (
   <RadioButtonWrapper>
-    <input type="radio" name={name} value={value} id={id} checked={checked} onChange={onChange} />
+    <input
+      type="radio"
+      name={name}
+      value={value}
+      id={id}
+      checked={checked}
+      onChange={onChange}
+    />
     <div>{children}</div>
   </RadioButtonWrapper>
 );
