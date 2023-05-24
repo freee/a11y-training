@@ -17,3 +17,4 @@ export * from './Ol';
 export * from './Li';
 export * from './P';
 export * from './Blockquote';
+export * from './ModalDialog';

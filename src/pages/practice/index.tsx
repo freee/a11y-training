@@ -7,6 +7,7 @@ import {
   H3,
   IconButton,
   Li,
+  ModalDialog,
   P,
   RadioButton,
   TextLink,
@@ -14,9 +15,11 @@ import {
 } from '../../components/parts';
 import { NoLabel } from '../../components/examples/form';
 import { publicPath } from '../../utils/publicPath';
-import { MdContentCopy, MdDelete, MdEdit, MdSend } from 'react-icons/md';
+import { MdContentCopy, MdDelete, MdEdit } from 'react-icons/md';
 import { BadVisual } from '../../components/examples/link';
 import { ExampleContainer } from '../../components/examples';
+
+const modalDelay = 5;
 
 const Practice = (): JSX.Element => {
   React.useEffect(() => {
@@ -42,10 +45,28 @@ const Practice = (): JSX.Element => {
     | 'okinawa'
     | 'overseas'
   >();
+  const [modalOpen, setModalOpen] = React.useState(false);
+  const intervalRef = React.useRef<NodeJS.Timeout | null>(null);
+  React.useEffect(() => {
+    if (!intervalRef.current) {
+      intervalRef.current = setTimeout(() => {
+        setModalOpen(true);
+      }, modalDelay * 1000);
+    }
+    return () => {
+      if (intervalRef.current) {
+        clearTimeout(intervalRef.current);
+      }
+    };
+  }, []);
 
   return (
     <>
       <Title>アクセシビリティチェックの練習ページ</Title>
+      <ModalDialog open={modalOpen} onClose={() => setModalOpen(false)}>
+        <H2>見てくれてありがとう</H2>
+        <P>閲覧しはじめて{modalDelay}秒経ちました</P>
+      </ModalDialog>
 
       <H2>アクセシビリティチェックの練習ページ</H2>
       <P>
