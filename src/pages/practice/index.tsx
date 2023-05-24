@@ -317,7 +317,7 @@ const Practice = (): JSX.Element => {
       </ExampleContainer>
       <div style={{ marginTop: '1rem' }}>
         <Button
-          onClick={() => {
+          onMouseDown={() => {
             window.alert('送信しました');
           }}
           as="span"
