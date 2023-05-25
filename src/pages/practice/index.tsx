@@ -96,11 +96,11 @@ const Practice = (): JSX.Element => {
         {/* eslint-disable-next-line jsx-a11y/alt-text */}
         <img
           src={publicPath('welcome_to_my_homepage.png')}
-          width={746}
-          height={36}
+          width={600}
+          height={40}
           style={{
-            width: `${746 / 16}rem`,
-            height: `${36 / 16}rem`,
+            width: `${600 / 16}rem`,
+            height: `${40 / 16}rem`,
           }}
         />
       </H3>
