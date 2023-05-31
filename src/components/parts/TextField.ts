@@ -8,6 +8,9 @@ export const TextField = styled.input<{ width?: 'normal' | 'tel' }>`
   width: ${({ width }) => (width == 'tel' ? '4rem' : '20rem')};
   font-size: 1rem;
   max-width: 100%;
+  ::placeholder {
+    color: #aaa7a7;
+  }
 `;
 TextField.defaultProps = {
   type: 'text',

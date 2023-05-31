@@ -10,7 +10,7 @@ export const FieldWithBadErrorMessage = ({
 }: {
   fieldAriaLabel?: string;
 }): JSX.Element => {
-  const [value, setValue] = React.useState('１４１-００３２');
+  const [value, setValue] = React.useState('');
   const [message, setMessage] = React.useState('');
 
   return (
@@ -20,7 +20,6 @@ export const FieldWithBadErrorMessage = ({
         e.preventDefault();
       }}
     >
-      <P>数字は全角で、ハイフンは半角で入力してください</P>
       <FormItem style={{ marginTop: '1rem' }}>
         {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
         <label>
@@ -29,6 +28,7 @@ export const FieldWithBadErrorMessage = ({
             type="text"
             value={value}
             onChange={(e) => setValue(e.target.value)}
+            placeholder="１４１-００３２"
             aria-label={fieldAriaLabel}
           />
         </label>
