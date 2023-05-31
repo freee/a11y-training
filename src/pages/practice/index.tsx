@@ -199,7 +199,7 @@ const Practice = (): JSX.Element => {
       <H3 as="h4">フォーム</H3>
       <NoLabel />
       <ExampleContainer>
-        <FieldWithBadErrorMessage />
+        <FieldWithBadErrorMessage fieldAriaLabel="ご住所" />
       </ExampleContainer>
       <ExampleContainer>
         <FormItem>
