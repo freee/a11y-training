@@ -16,7 +16,13 @@ import {
 } from '../../components/parts';
 import { NoLabel } from '../../components/examples/form';
 import { publicPath } from '../../utils/publicPath';
-import { MdAdd, MdContentCopy, MdDelete, MdEdit, MdRemove } from 'react-icons/md';
+import {
+  MdAdd,
+  MdContentCopy,
+  MdDelete,
+  MdEdit,
+  MdRemove,
+} from 'react-icons/md';
 import { BadVisual } from '../../components/examples/link';
 import { ExampleContainer } from '../../components/examples';
 import styled from 'styled-components';
@@ -32,7 +38,7 @@ const SmallButton = styled.button`
   border: 1px solid #d7d2d2;
   font-size: 0.625rem;
   border-radius: 50%;
-  padding:0;
+  padding: 0;
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -74,7 +80,7 @@ const Practice = (): JSX.Element => {
     | 'okinawa'
     | 'overseas'
   >();
-  const [counter, setCounter] = React.useState(12345)
+  const [counter, setCounter] = React.useState(12345);
   const [modalOpen, setModalOpen] = React.useState(false);
   const intervalRef = React.useRef<NodeJS.Timeout | null>(null);
   React.useEffect(() => {
@@ -172,9 +178,19 @@ const Practice = (): JSX.Element => {
       </ExampleContainer>
       <H4>カウンター</H4>
       <ExampleContainer>
-        <SmallButton onClick={()=> setCounter(counter+1)} aria-label="カウントアップ"><MdAdd /></SmallButton>
+        <SmallButton
+          onClick={() => setCounter(counter + 1)}
+          aria-label="カウントアップ"
+        >
+          <MdAdd />
+        </SmallButton>
         <output>{counter}</output>
-        <SmallButton onClick={()=> setCounter(counter-1)} aria-label="カウントダウン"><MdRemove /></SmallButton>
+        <SmallButton
+          onClick={() => setCounter(counter - 1)}
+          aria-label="カウントダウン"
+        >
+          <MdRemove />
+        </SmallButton>
       </ExampleContainer>
 
       <H3 as="h4">フォーム</H3>
