@@ -24,7 +24,7 @@ import {
   MdRemove,
 } from 'react-icons/md';
 import { BadVisual } from '../../components/examples/link';
-import { ExampleContainer } from '../../components/examples';
+import { ExampleContainer, FieldWithBadErrorMessage } from '../../components/examples';
 import styled from 'styled-components';
 
 const modalDelay = 5;
@@ -195,6 +195,9 @@ const Practice = (): JSX.Element => {
 
       <H3 as="h4">フォーム</H3>
       <NoLabel />
+      <ExampleContainer>
+        <FieldWithBadErrorMessage />
+      </ExampleContainer>
       <ExampleContainer>
         <FormItem>
           <fieldset>
