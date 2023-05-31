@@ -24,7 +24,10 @@ import {
   MdRemove,
 } from 'react-icons/md';
 import { BadVisual } from '../../components/examples/link';
-import { ExampleContainer, FieldWithBadErrorMessage } from '../../components/examples';
+import {
+  ExampleContainer,
+  FieldWithBadErrorMessage,
+} from '../../components/examples';
 import styled from 'styled-components';
 
 const modalDelay = 5;

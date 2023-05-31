@@ -2,11 +2,14 @@ import * as React from 'react';
 import { TextField, FormItem, FormLabel, Button, P } from '../parts';
 import styled from 'styled-components';
 
-
 const ErrorMessage = styled(P)`
   color: #dc1e32;
-`
-export const FieldWithBadErrorMessage = ({fieldAriaLabel}:{fieldAriaLabel?: string}):JSX.Element => {
+`;
+export const FieldWithBadErrorMessage = ({
+  fieldAriaLabel,
+}: {
+  fieldAriaLabel?: string;
+}): JSX.Element => {
   const [value, setValue] = React.useState('１４１-００３２');
   const [message, setMessage] = React.useState('');
 
@@ -18,7 +21,7 @@ export const FieldWithBadErrorMessage = ({fieldAriaLabel}:{fieldAriaLabel?: stri
       }}
     >
       <P>数字は全角で、ハイフンは半角で入力してください</P>
-      <FormItem style={{marginTop: '1rem'}}>
+      <FormItem style={{ marginTop: '1rem' }}>
         {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
         <label>
           <FormLabel>郵便番号</FormLabel>
