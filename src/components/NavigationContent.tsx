@@ -68,7 +68,12 @@ const NavigationData = [
   {
     title: 'ランドマーク',
     pathname: '/landmark/',
-    children: [{ title: '本文の開始位置が明示されていない例', pathname: '/landmark/no-main/' }],
+    children: [
+      {
+        title: '本文の開始位置が明示されていない例',
+        pathname: '/landmark/no-main/',
+      },
+    ],
   },
   { title: 'アクセシビリティチェックの練習ページ', pathname: '/practice/' },
 ];
