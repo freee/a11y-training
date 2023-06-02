@@ -53,25 +53,28 @@ const Navigation = styled.nav`
 export const LayoutFunc: React.ForwardRefRenderFunction<
   HTMLElement,
   { pathname: string; children: ReactNode }
-> = ({ children, pathname }, ref) => (
-  <>
-    <Head>
-      <link rel="icon" href={publicPath('favicon.ico')} />
-    </Head>
-    <Header>
-      <HeaderTitle>freee Accessibility Training</HeaderTitle>
-    </Header>
-    <Settings />
-    <Container>
-      <Main ref={ref} tabIndex={-1}>
-        <ContentsContext>{children}</ContentsContext>
-      </Main>
-      <Navigation>
-        <NavigationContent pathname={pathname} />
-      </Navigation>
-    </Container>
-    <Footer />
-  </>
-);
+> = ({ children, pathname }, ref) => {
+  const mainAs = pathname.match(/^\/?landmark\/no-main\/?/) ? 'section' : 'main';
+  return (
+    <>
+      <Head>
+        <link rel="icon" href={publicPath('favicon.ico')} />
+      </Head>
+      <Header>
+        <HeaderTitle>freee Accessibility Training</HeaderTitle>
+      </Header>
+      <Settings />
+      <Container>
+        <Main ref={ref} tabIndex={-1} as={mainAs}>
+          <ContentsContext>{children}</ContentsContext>
+        </Main>
+        <Navigation>
+          <NavigationContent pathname={pathname} />
+        </Navigation>
+      </Container>
+      <Footer />
+    </>
+  );
+};
 
 export const Layout = forwardRef(LayoutFunc);
