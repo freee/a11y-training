@@ -6,6 +6,7 @@ import { Footer } from './Footer';
 import { ContentsContext } from './contents';
 import { publicPath } from '../utils/publicPath';
 import { NavigationContent } from './NavigationContent';
+import Link from 'next/link';
 
 const Header = styled.header`
   padding: 1rem 4rem;
@@ -24,6 +25,14 @@ const HeaderTitle = styled.h1`
     font-size: 1.2rem;
   }
 `;
+const HeaderTitleLink = styled.a`
+  color: #fff;
+  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+  }
+`;
+
 const Main = styled.main`
   padding: 2rem 4rem 0;
   max-width: 60rem;
@@ -63,7 +72,13 @@ export const LayoutFunc: React.ForwardRefRenderFunction<
         <link rel="icon" href={publicPath('favicon.ico')} />
       </Head>
       <Header>
-        <HeaderTitle>freee Accessibility Training</HeaderTitle>
+        <HeaderTitle>
+          <Link href="/" passHref>
+            <HeaderTitleLink href="/">
+              freee Accessibility Training
+            </HeaderTitleLink>
+          </Link>
+        </HeaderTitle>
       </Header>
       <Settings />
       <Container>
