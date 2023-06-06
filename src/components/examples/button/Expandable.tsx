@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { Button } from '../../parts/Button';
 
 export const HamburgerStyle = styled.div`
-    height: 200px;
+    height: 12.5rem;
     .hamburgermenu {
         background: #ffffff;
         overflow: hidden;
@@ -17,7 +17,7 @@ export const HamburgerStyle = styled.div`
     }
     // ハンバーガーメニューが開いたときに幅を指定する。アニメーションでせり出すように見える
     .hamburgermenu.expanded {
-        width: 200px;
+        width: 12.5rem;
     }
 `;
 
