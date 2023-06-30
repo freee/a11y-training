@@ -18,9 +18,11 @@ const Stack = styled.div`
 const LikeButton = ({
   defaultLiked,
   aria,
+  notification,
 }: {
   defaultLiked: boolean;
   aria: boolean;
+  notification: boolean;
 }): JSX.Element => {
   const [liked, setLiked] = React.useState<boolean>(false);
   const [message, setMessage] = React.useState<string>('');
@@ -52,7 +54,7 @@ const LikeButton = ({
           setLiked(!liked);
         }}
       />
-      <Notification>{message}</Notification>
+      {notification ? <Notification>{message}</Notification> : <Notification as="div">{message}</Notification>}
     </Stack>
   );
 };
@@ -60,10 +62,10 @@ const LikeButton = ({
 export const GoodPressed = (): JSX.Element => (
   <>
     <ExampleContainer>
-      <LikeButton defaultLiked={false} aria={true} />
+      <LikeButton defaultLiked={false} aria={true} notification={true} />
     </ExampleContainer>
     <ExampleContainer>
-      <LikeButton defaultLiked={true} aria={true} />
+      <LikeButton defaultLiked={true} aria={true} notification={true} />
     </ExampleContainer>
   </>
 );
@@ -71,10 +73,21 @@ export const GoodPressed = (): JSX.Element => (
 export const BadPressed = (): JSX.Element => (
   <>
     <ExampleContainer>
-      <LikeButton defaultLiked={false} aria={false} />
+      <LikeButton defaultLiked={false} aria={false} notification={true} />
     </ExampleContainer>
     <ExampleContainer>
-      <LikeButton defaultLiked={true} aria={false} />
+      <LikeButton defaultLiked={true} aria={false} notification={true} />
+    </ExampleContainer>
+  </>
+);
+
+export const BadStatusMessage = (): JSX.Element => (
+  <>
+    <ExampleContainer>
+      <LikeButton defaultLiked={false} aria={true} notification={false} />
+    </ExampleContainer>
+    <ExampleContainer>
+      <LikeButton defaultLiked={true} aria={true} notification={false} />
     </ExampleContainer>
   </>
 );
