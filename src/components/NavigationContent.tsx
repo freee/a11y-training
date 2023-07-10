@@ -75,6 +75,10 @@ const NavigationData = [
       },
     ],
   },
+  {
+    title: 'ステータスメッセージ',
+    pathname: '/status-message/',
+  },
   { title: 'アクセシビリティチェックの練習ページ', pathname: '/practice/' },
 ];
 
