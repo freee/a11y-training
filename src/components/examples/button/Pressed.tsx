@@ -54,7 +54,11 @@ const LikeButton = ({
           setLiked(!liked);
         }}
       />
-      {notification ? <Notification>{message}</Notification> : <Notification as="div">{message}</Notification>}
+      {notification ? (
+        <Notification>{message}</Notification>
+      ) : (
+        <Notification as="div">{message}</Notification>
+      )}
     </Stack>
   );
 };
