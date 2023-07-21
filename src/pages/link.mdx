@@ -9,6 +9,7 @@ import {
 } from '/src/components/examples/link';
 
 import { Title } from '/src/components/Title';
+import { RelatedChecks } from '/src/components/parts/RelatedChecks';
 
 <Title>リンク</Title>
 
@@ -34,6 +35,8 @@ HTML では `<a href="https://www.freee.co.jp">freee株式会社</a>` のよう�
 
 <BadVisual />
 
+<RelatedChecks ids={['0051']} />
+
 ### リンク先を具体的に表す文言にする
 
 スクリーンリーダーを使用していて、リンクへのジャンプを使用する場合や<kbd>Tab</kbd>キーでフォーカスを移動させていく場合、リンクに指定している文字列が読み上げられます。
@@ -50,6 +53,8 @@ HTML では `<a href="https://www.freee.co.jp">freee株式会社</a>` のよう�
 また、画面を視覚的に捉えているユーザーにとっても、「こちら」とい文字列部分が短いためマウスポインタを合わせてクリックすることが難しい場合があったり、アンダーラインを表示しないようにしている場合にはリンクを見つけづらい場合があったりします。
 
 <BadLabels />
+
+<RelatedChecks ids={['0261']} />
 
 ### `<a href="...">` で実装する
 
@@ -75,3 +80,5 @@ HTML では `<a href="https://www.freee.co.jp">freee株式会社</a>` のよう�
 #### 悪い例: `<a>` 要素を使用していない
 
 <BadElementSpan />
+
+<RelatedChecks ids={['0231']} />
