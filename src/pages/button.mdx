@@ -15,6 +15,7 @@ import {
 import { ExampleContainer } from '/src/components/examples';
 
 import { Title } from '/src/components/Title';
+import { RelatedChecks } from '/src/components/parts/RelatedChecks';
 
 <Title>ボタン</Title>
 
@@ -55,6 +56,8 @@ Web アプリケーションにはボタンが必要不可欠です。静的な 
 
 <BadElementWithGoodRole />
 
+<RelatedChecks ids={['0231']} />
+
 ### 画像やアイコンのボタンには代替テキストをつける
 
 Web アプリケーションではボタンに文字を表示せず、アイコンや画像を配置するのみとする場合が多くありますが、必ず代替テキストをつけてください。
@@ -78,6 +81,8 @@ Web アプリケーションではボタンに文字を表示せず、アイコ�
 
 <Koku />
 
+<RelatedChecks ids={['0411']} />
+
 ### アイコンの説明が重複しない
 
 同じ意味のアイコンとテキストを並べて使用するときは、アイコンには代替テキストを設定しないようにします。代替テキストを設定していると、スクリーンリーダーには「編集 編集」「コピー コピー」「削除 削除」のように重複して読み上げられてしまいます。
@@ -89,6 +94,8 @@ Web アプリケーションではボタンに文字を表示せず、アイコ�
 #### 悪い例: 説明が重複する
 
 <BadIconAndLabel />
+
+<RelatedChecks ids={['0413']} />
 
 ### ボタンの状態がわかるようにする
 
@@ -105,6 +112,8 @@ Web アプリケーションではボタンに文字を表示せず、アイコ�
 スクリーンリーダーでは、ボタンがどういう状態かを知覚できません。
 
 <BadPressed />
+
+<RelatedChecks ids={['0592']} />
 
 ### 開閉するボタン
 
@@ -134,3 +143,5 @@ Web アプリケーションではボタンに文字を表示せず、アイコ�
 - 非表示になっているコンテンツは、スクリーンリーダーに読み上げられ、キーボードによるフォーカスを受け取ります
 
 <BadExpandableButton />
+
+<RelatedChecks ids={['0591']} />
