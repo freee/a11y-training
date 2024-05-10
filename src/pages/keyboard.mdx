@@ -3,9 +3,7 @@ import { IconButton, TextLink } from '/src/components/parts';
 import { MdContentCopy, MdEdit, MdDelete } from 'react-icons/md';
 import { Title } from '/src/components/Title';
 import { RelatedChecks } from '/src/components/parts/RelatedChecks';
-import {
-  FieldLabelsFor,
-} from '/src/components/examples/form';
+import { FieldLabelsFor } from '/src/components/examples/form';
 
 <Title>キーボードで操作してみよう</Title>
 
@@ -41,7 +39,9 @@ import {
 <ExampleContainer>
   <TextLink href="https://corp.freee.co.jp">freee株式会社</TextLink>
   <TextLink href="https://jobs.freee.co.jp">採用情報</TextLink>
-  <TextLink href="https://developers.freee.co.jp">freee Developers Hub</TextLink>
+  <TextLink href="https://developers.freee.co.jp">
+    freee Developers Hub
+  </TextLink>
 </ExampleContainer>
 <ExampleContainer>
   <IconButton
@@ -145,6 +145,5 @@ import {
     focusIndicator="specified"
   />
 </ExampleContainer>
-
 
 <RelatedChecks ids={['0171']} />
