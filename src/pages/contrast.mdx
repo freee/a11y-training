@@ -13,21 +13,21 @@ import { Title } from '/src/components/Title';
 コントラスト比が低いと、文字が読みにくくなります。特にロービジョンや老眼によって見づらさを抱えている人にとっては、大きな障害となります。
 
 <ExampleContainer>
-  <p style={{ padding: '0.25rem 0.75rem', background: '#fff', color: '#323232'}}>
+  <div style={{ padding: '0.25rem 0.75rem', background: '#fff', color: '#323232'}}>
     明るい背景色の上では、
     <span style={{color: '#fff0d2'}}>明るい色の文字</span>
     は見づらくなります。
-  </p>
+  </div>
 
-  <p style={{padding: '0.25rem 0.75rem', background: '#464343', color: '#fff'}}>
+  <div style={{padding: '0.25rem 0.75rem', background: '#464343', color: '#fff'}}>
     暗い背景色の上では、
     <span style={{color: '#5a5a5a'}}>暗い色の文字</span>
     は見づらくなります。
-  </p>
+  </div>
 </ExampleContainer>
 
 freee のガイドラインでは、テキストについて 4.5:1 以上のコントラスト比を満たすことを求めています（[コントラスト比の確保](https://a11y-guidelines.freee.co.jp/categories/text.html#gl-text-contrast)）。
-サイズの大きいテキストについては 3:1 以上でも良いことになっていますが、できるだけ 4.5:1 以上を目指すようにしましょう。
+サイズの大きいテキストについては 3:1 以上でも良いことになっていますが、できるだけ 4.5:1 またはそれ以上を目指すようにしましょう。
 
 コントラスト比は、[WebAIM Contrast Checker](https://webaim.org/resources/contrastchecker/)で確認することができます。
 Background Color（背景色）と Foreground Color（前景色）それぞれにカラーコードを入力するか、カラーピッカーを使って色を選択すると、Contrast Ratio の欄にコントラスト比が表示されます。
