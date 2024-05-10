@@ -1,0 +1,38 @@
+import { ExampleContainer } from '/src/components/examples';
+import { RelatedChecks } from '/src/components/parts/RelatedChecks';
+import { Title } from '/src/components/Title';
+
+<Title>色のコントラスト比</Title>
+
+## 色のコントラスト比
+
+色のコントラスト比は、文字と背景の色の明るさの差を示す指標です。
+
+### 背景色と文字色のコントラスト比
+
+コントラスト比が低いと、文字が読みにくくなります。特にロービジョンや老眼によって見づらさを抱えている人にとっては、大きな障害となります。
+
+<ExampleContainer>
+  <p style={{ padding: '0.25rem 0.75rem', background: '#fff', color: '#323232'}}>
+    明るい背景色の上では、
+    <span style={{color: '#fff0d2'}}>明るい色の文字</span>
+    は見づらくなります。
+  </p>
+
+  <p style={{padding: '0.25rem 0.75rem', background: '#464343', color: '#fff'}}>
+    暗い背景色の上では、
+    <span style={{color: '#5a5a5a'}}>暗い色の文字</span>
+    は見づらくなります。
+  </p>
+</ExampleContainer>
+
+freeeのガイドラインでは、テキストについて4.5:1以上のコントラスト比を満たすことを求めています（[コントラスト比の確保](https://a11y-guidelines.freee.co.jp/categories/text.html#gl-text-contrast)）。
+サイズの大きいテキストについては3:1以上でも良いことになっていますが、できるだけ4.5:1以上を目指すようにしましょう。
+
+コントラスト比は、[WebAIM Contrast Checker](https://webaim.org/resources/contrastchecker/)で確認することができます。
+Background Color（背景色）とForeground Color（前景色）それぞれにカラーコードを入力するか、カラーピッカーを使って色を選択すると、Contrast Ratioの欄にコントラスト比が表示されます。
+
+また、実装されたページに対するコントラスト比のチェックは、axe DevToolsで行うことができます。
+コントラスト比の低い部分は **「要素は色のコントラスト比（最低限）の閾値を満たしていなければなりません (Elements must meet minimum color contrast ratio thresholds)」** という問題として、検出されます。
+
+<RelatedChecks ids={['0021']} />

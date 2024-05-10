@@ -44,6 +44,7 @@ const NavLink = styled.a.attrs(({ current }: { current: boolean }) => ({
 `;
 const NavigationData = [
   { title: 'ホーム', pathname: '/' },
+  {title: '色のコントラスト比', pathname: '/contrast/'},
   { title: 'キーボードで操作してみよう', pathname: '/keyboard/' },
   { title: 'スクリーンリーダーを使ってみよう', pathname: '/screen-reader/' },
   { title: '画像', pathname: '/image/' },
