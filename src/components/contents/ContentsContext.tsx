@@ -1,7 +1,7 @@
 import React from 'react';
 import { MDXProvider } from '@mdx-js/react';
 import styled from 'styled-components';
-import { Blockquote, H2, H3, H4, Li, Ol, P, TextLink, Ul } from '../parts';
+import { Blockquote, H2, H3, H4, H5, Li, Ol, P, TextLink, Ul } from '../parts';
 import Link from 'next/link';
 
 const components: React.ComponentProps<typeof MDXProvider>['components'] = {
@@ -15,6 +15,7 @@ const components: React.ComponentProps<typeof MDXProvider>['components'] = {
   h2: H2,
   h3: H3,
   h4: H4,
+  h5: H5,
   ul: Ul,
   ol: Ol,
   li: Li,
