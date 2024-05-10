@@ -4,7 +4,9 @@ import { Button } from '../../parts';
 
 export const ButtonElement = (): JSX.Element => (
   <ExampleContainer>
-    <Button type="button" onClick={() => window.alert('クリックされました')}>送信</Button>
+    <Button type="button" onClick={() => window.alert('クリックされました')}>
+      送信
+    </Button>
   </ExampleContainer>
 );
 
