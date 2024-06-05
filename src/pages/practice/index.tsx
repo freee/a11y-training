@@ -2,19 +2,20 @@ import * as React from 'react';
 import { Title } from '../../components/Title';
 import {
   Button,
+  CheckBox,
   FormItem,
+  FormLabel,
   H2,
   H3,
   H4,
   IconButton,
   Li,
-  ModalDialog,
   P,
   RadioButton,
+  TextField,
   TextLink,
   Ul,
 } from '../../components/parts';
-import { NoLabel } from '../../components/examples/form';
 import { publicPath } from '../../utils/publicPath';
 import {
   MdAdd,
@@ -28,9 +29,7 @@ import {
   ExampleContainer,
   FieldWithBadErrorMessage,
 } from '../../components/examples';
-import styled from 'styled-components';
-
-const modalDelay = 5;
+import { styled } from 'styled-components';
 
 const SmallButton = styled.button`
   width: 1rem;
@@ -59,6 +58,10 @@ const SmallButton = styled.button`
   }
 `;
 
+const GrayText = styled.p`
+  color: #999;
+`;
+
 const Practice = (): JSX.Element => {
   React.useEffect(() => {
     const html = document.getElementsByTagName('html')[0];
@@ -84,28 +87,10 @@ const Practice = (): JSX.Element => {
     | 'overseas'
   >();
   const [counter, setCounter] = React.useState(12345);
-  const [modalOpen, setModalOpen] = React.useState(false);
-  const intervalRef = React.useRef<NodeJS.Timeout | null>(null);
-  React.useEffect(() => {
-    if (!intervalRef.current) {
-      intervalRef.current = setTimeout(() => {
-        setModalOpen(true);
-      }, modalDelay * 1000);
-    }
-    return () => {
-      if (intervalRef.current) {
-        clearTimeout(intervalRef.current);
-      }
-    };
-  }, []);
 
   return (
     <>
       <Title>アクセシビリティチェックの練習ページ</Title>
-      <ModalDialog open={modalOpen} onClose={() => setModalOpen(false)}>
-        <H2>見てくれてありがとう</H2>
-        <P>閲覧しはじめて{modalDelay}秒経ちました</P>
-      </ModalDialog>
 
       <H2>アクセシビリティチェックの練習ページ</H2>
       <P>
@@ -197,11 +182,34 @@ const Practice = (): JSX.Element => {
       </ExampleContainer>
 
       <H3 as="h4">フォーム</H3>
-      <NoLabel />
       <ExampleContainer>
-        <FieldWithBadErrorMessage fieldAriaLabel="ご住所" />
-      </ExampleContainer>
-      <ExampleContainer>
+        <FormItem>
+          <label htmlFor="name">
+            <FormLabel>氏名</FormLabel>
+          </label>
+          <TextField type="text" />
+          <GrayText>姓と名の間には全角スペースを入れてください</GrayText>
+        </FormItem>
+        <FormItem>
+          <FormLabel>メールアドレス</FormLabel>
+          <TextField type="email" id="name" />
+        </FormItem>
+        <FormItem>
+          <fieldset>
+            <legend>
+              <FormLabel>性別</FormLabel>
+            </legend>
+            <RadioButton name="sex" value="1">
+              男性
+            </RadioButton>
+            <RadioButton name="sex" value="2">
+              女性
+            </RadioButton>
+            <RadioButton name="sex" value="9">
+              その他
+            </RadioButton>
+          </fieldset>
+        </FormItem>
         <FormItem>
           <fieldset>
             <legend>年代</legend>
@@ -372,6 +380,14 @@ const Practice = (): JSX.Element => {
             </RadioButton>
           </fieldset>
         </FormItem>
+        <FormItem>
+          <CheckBox name="toc" value="agree">
+            利用規約に同意する
+          </CheckBox>
+        </FormItem>
+      </ExampleContainer>
+      <ExampleContainer>
+        <FieldWithBadErrorMessage fieldAriaLabel="postal-code" />
       </ExampleContainer>
       <div style={{ marginTop: '1rem' }}>
         <Button

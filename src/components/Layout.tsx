@@ -63,9 +63,11 @@ export const LayoutFunc: React.ForwardRefRenderFunction<
   HTMLElement,
   { pathname: string; children: ReactNode }
 > = ({ children, pathname }, ref) => {
-  const mainAs = pathname.match(/^\/?landmark\/no-main\/?/)
-    ? 'section'
-    : 'main';
+  const mainAs =
+    pathname.match(/^\/?landmark\/no-main\/?/) ||
+    pathname.match(/^\/?practice\/?$/)
+      ? 'section'
+      : 'main';
   return (
     <>
       <Head>
