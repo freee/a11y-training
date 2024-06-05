@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { IconType } from 'react-icons/lib';
 
 const IconButtonStyle = styled.button<{
-  pressed?: boolean;
+  $pressed?: boolean;
   focusIndicator?: 'browser' | 'specified' | 'none';
 }>`
   display: inline-flex;
@@ -23,20 +23,20 @@ const IconButtonStyle = styled.button<{
   cursor: pointer;
   padding: 0.5rem 1rem;
 
-  ${({ pressed }) => ({
-    borderColor: pressed ? '#2864f0' : '#d7d2d2',
-    background: pressed ? '#2864f0' : '#fff',
-    color: pressed ? '#fff' : '#323232',
+  ${({ $pressed }) => ({
+    borderColor: $pressed ? '#2864f0' : '#d7d2d2',
+    background: $pressed ? '#2864f0' : '#fff',
+    color: $pressed ? '#fff' : '#323232',
   })}
 
   &:hover {
     color: #2864f0;
     border-color: #2864f0;
     background-color: #ebf3ff;
-    ${({ pressed }) => ({
-      color: pressed ? '#fff' : '#2864f0',
-      backgroundColor: pressed ? '#285ac8' : '#ebf3ff',
-      borderColor: pressed ? '#285ac8' : '#2864f0',
+    ${({ $pressed }) => ({
+      color: $pressed ? '#fff' : '#2864f0',
+      backgroundColor: $pressed ? '#285ac8' : '#ebf3ff',
+      borderColor: $pressed ? '#285ac8' : '#2864f0',
     })}
   }
   &:focus-visible {
@@ -68,19 +68,26 @@ export const IconButton = ({
   IconComponent,
   text,
   iconLabel,
+  as,
+  pressed,
   ...props
 }: {
   IconComponent: IconType;
   text?: string;
   iconLabel?: string;
-} & React.ComponentProps<typeof IconButtonStyle>): JSX.Element => (
-  <IconButtonStyle {...props}>
+  as?: React.ElementType;
+  pressed?: boolean;
+} & Omit<
+  React.ComponentProps<typeof IconButtonStyle>,
+  'as' | '$pressed'
+>): JSX.Element => (
+  <IconButtonStyle as={as} $pressed={pressed} {...props}>
     <span className="icon">
       <IconComponent
         aria-label={iconLabel}
         aria-hidden={iconLabel ? undefined : true}
       />
     </span>
-    {text && <span className="text">{text}</span>}
+    {text ? <span className="text">{text}</span> : undefined}
   </IconButtonStyle>
 );

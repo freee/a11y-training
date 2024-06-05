@@ -14,9 +14,7 @@ const NavList = styled.ul`
   padding: 0 1rem;
 `;
 
-const NavLink = styled.a.attrs(({ current }: { current: boolean }) => ({
-  current,
-}))`
+const NavLink = styled(Link)<{ $current: boolean }>`
   display: block;
   padding: 0.25rem 0.5rem;
   color: #285ac8;
@@ -33,7 +31,7 @@ const NavLink = styled.a.attrs(({ current }: { current: boolean }) => ({
     border-top: 0.25rem solid transparent;
     border-bottom: 0.25rem solid transparent;
     border-left: 0.5rem solid
-      ${({ current }) => (current ? '#aac8ff' : 'transparent')};
+      ${({ $current }) => ($current ? '#aac8ff' : 'transparent')};
     transition: border-color 0.2s;
   }
 
@@ -98,30 +96,26 @@ export const NavigationContent = ({
         const current = isCurrent(pathname, n.pathname);
         return (
           <li key={n.pathname}>
-            <Link href={n.pathname} passHref>
-              <NavLink
-                href={n.pathname}
-                aria-current={current ? 'page' : undefined}
-                current={current}
-              >
-                {n.title}
-              </NavLink>
-            </Link>
+            <NavLink
+              href={n.pathname}
+              aria-current={current ? 'page' : undefined}
+              $current={current}
+            >
+              {n.title}
+            </NavLink>
             {n.children && (
               <NavList>
                 {n.children.map((c) => {
                   const current = isCurrent(pathname, c.pathname);
                   return (
                     <li key={c.pathname}>
-                      <Link href={c.pathname} passHref>
-                        <NavLink
-                          href={c.pathname}
-                          aria-current={current ? 'page' : undefined}
-                          current={current}
-                        >
-                          {c.title}
-                        </NavLink>
-                      </Link>
+                      <NavLink
+                        href={c.pathname}
+                        aria-current={current ? 'page' : undefined}
+                        $current={current}
+                      >
+                        {c.title}
+                      </NavLink>
                     </li>
                   );
                 })}
