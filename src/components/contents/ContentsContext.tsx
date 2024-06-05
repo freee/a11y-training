@@ -8,7 +8,7 @@ const components: React.ComponentProps<typeof MDXProvider>['components'] = {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   a: ({ href, ref, ...props }) => (
     <Link passHref={true} href={href || ''}>
-      <TextLink {...props} />
+      <TextLink as="span" {...props} />
     </Link>
   ),
   p: P,

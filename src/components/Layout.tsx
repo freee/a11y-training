@@ -25,7 +25,7 @@ const HeaderTitle = styled.h1`
     font-size: 1.2rem;
   }
 `;
-const HeaderTitleLink = styled.a`
+const HeaderTitleLink = styled(Link)`
   color: #fff;
   text-decoration: none;
   &:hover {
@@ -73,11 +73,9 @@ export const LayoutFunc: React.ForwardRefRenderFunction<
       </Head>
       <Header>
         <HeaderTitle>
-          <Link href="/" passHref>
-            <HeaderTitleLink href="/">
-              freee Accessibility Training
-            </HeaderTitleLink>
-          </Link>
+          <HeaderTitleLink href="/">
+            freee Accessibility Training
+          </HeaderTitleLink>
         </HeaderTitle>
       </Header>
       <Settings />
