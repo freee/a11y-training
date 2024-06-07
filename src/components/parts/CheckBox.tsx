@@ -16,7 +16,7 @@ export const CheckBox = ({
   value?: string;
   id?: string;
   checked?: boolean;
-  onChange?: React.ChangeEventHandler;
+  onChange?: React.ChangeEventHandler<HTMLInputElement>;
 }): JSX.Element => (
   <CheckBoxWrapper>
     <input type="checkbox" {...props} />
