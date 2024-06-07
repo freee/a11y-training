@@ -485,7 +485,7 @@ const Practice = (): JSX.Element => {
             alignItems: 'start',
             flexDirection: 'column-reverse',
             marginBottom: '1rem',
-            gap: '1rem'
+            gap: '1rem',
           }}
         >
           <FormItem>
@@ -512,8 +512,9 @@ const Practice = (): JSX.Element => {
             onMouseDown={() => {
               window.alert(
                 postalCodeMessage
-                  ? '送信できません。入力内容を確認してください':
-                  !agree || !postalCode ? '入力が不正です'
+                  ? '送信できません。入力内容を確認してください'
+                  : !agree || !postalCode
+                  ? '入力が不正です'
                   : '送信しました'
               );
             }}
@@ -523,7 +524,7 @@ const Practice = (): JSX.Element => {
             送信
           </Button>
 
-          <div style={{ display: 'inline-block', marginLeft: '1rem'}}>
+          <div style={{ display: 'inline-block', marginLeft: '1rem' }}>
             <CheckBox
               name="tos"
               value="agree"
