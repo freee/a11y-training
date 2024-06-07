@@ -23,12 +23,10 @@ import {
   MdDelete,
   MdEdit,
   MdRemove,
+  MdHelp,
 } from 'react-icons/md';
 import { BadVisual } from '../../components/examples/link';
-import {
-  ExampleContainer,
-  FieldWithBadErrorMessage,
-} from '../../components/examples';
+import { ExampleContainer } from '../../components/examples';
 import { styled } from 'styled-components';
 
 const SmallButton = styled.button`
@@ -62,6 +60,51 @@ const GrayText = styled.p`
   color: #999;
 `;
 
+const ErrorMessage = styled(P)`
+  color: #dc1e32;
+`;
+
+const HelpIcon = styled.span`
+  color: #8c8989;
+  font-size: 1.5em;
+  margin-left: 0.25em;
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+`;
+const Help = styled.span`
+  display: none;
+  position: absolute;
+  bottom: calc(100% + 0.5rem);
+  color: #323232;
+  left: -1.25rem;
+  background-color: #fff;
+  border: 1px solid #d7d2d2;
+  padding: 0.5em;
+  border-radius: 0.25em;
+  box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.3);
+  z-index: 1;
+  width: 20rem;
+  font-size: 0.75rem;
+  font-weight: normal;
+  &:before {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: calc(1.5rem - 2px);
+    border: calc(0.5em + 2px) solid transparent;
+    border-top-color: #d7d2d2;
+  }
+  &:after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 1.5rem;
+    border: 0.5em solid transparent;
+    border-top-color: #fff;
+  }
+`;
+
 const Practice = (): JSX.Element => {
   React.useEffect(() => {
     const html = document.getElementsByTagName('html')[0];
@@ -87,6 +130,11 @@ const Practice = (): JSX.Element => {
     | 'overseas'
   >();
   const [counter, setCounter] = React.useState(12345);
+  const [postalCode, setPostalCode] = React.useState('');
+  const postalCodeTouchedRef = React.useRef(false);
+  const [postalCodeMessage, setPostalCodeMessage] = React.useState('');
+  const [helpHover, setHelpHover] = React.useState(false);
+  const [agree, setAgree] = React.useState(false);
 
   return (
     <>
@@ -164,7 +212,24 @@ const Practice = (): JSX.Element => {
           as="span"
         />
       </ExampleContainer>
-      <H4>カウンター</H4>
+      <H4>
+        カウンター
+        <HelpIcon>
+          <MdHelp
+            role="img"
+            aria-label="ヘルプ"
+            onMouseEnter={() => setHelpHover(true)}
+            onMouseLeave={() => setHelpHover(false)}
+            onFocus={() => setHelpHover(true)}
+            onBlur={() => setHelpHover(false)}
+            tabIndex={0}
+          />
+          <Help style={{ display: helpHover ? 'block' : 'none' }}>
+            カウンターの値を増減するボタンです。ボタンを押すとカウンターの値が増減します。
+            詳しくは <TextLink href="http://example.com/">こちら</TextLink>
+          </Help>
+        </HelpIcon>
+      </H4>
       <ExampleContainer>
         <SmallButton
           onClick={() => setCounter(counter + 1)}
@@ -381,25 +446,95 @@ const Practice = (): JSX.Element => {
           </fieldset>
         </FormItem>
         <FormItem>
-          <CheckBox name="toc" value="agree">
-            利用規約に同意する
-          </CheckBox>
+          <label htmlFor="postal_code">
+            <FormLabel>郵便番号</FormLabel>
+          </label>
+          <TextField
+            type="text"
+            value={postalCode}
+            onFocus={() => {
+              postalCodeTouchedRef.current = true;
+              setPostalCodeMessage(
+                postalCodeTouchedRef.current &&
+                  !postalCode.match(/^[０-９]{3}-[０-９]{4}$/)
+                  ? '入力形式が正しくありません'
+                  : ''
+              );
+            }}
+            onChange={(e) => {
+              const value = e.target.value;
+              setPostalCode(value);
+              setPostalCodeMessage(
+                postalCodeTouchedRef.current &&
+                  !value.match(/^[０-９]{3}-[０-９]{4}$/)
+                  ? '入力形式が正しくありません'
+                  : ''
+              );
+            }}
+            placeholder="１４１-００３２"
+            aria-label="postal_code"
+            id="postal_code"
+          />
+          {postalCodeMessage && (
+            <ErrorMessage>{postalCodeMessage}</ErrorMessage>
+          )}
+        </FormItem>
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'start',
+            flexDirection: 'column-reverse',
+            marginBottom: '1rem',
+            gap: '1rem'
+          }}
+        >
+          <FormItem>
+            <label htmlFor="address">
+              <FormLabel>住所</FormLabel>
+            </label>
+            <TextField type="text" id="address" />
+          </FormItem>
+          <FormItem>
+            <label htmlFor="city">
+              <FormLabel>市区町村</FormLabel>
+            </label>
+            <TextField type="text" id="city" />
+          </FormItem>
+          <FormItem>
+            <label htmlFor="prefecture">
+              <FormLabel>都道府県</FormLabel>
+            </label>
+            <TextField type="text" id="prefecture" />
+          </FormItem>
+        </div>
+        <FormItem>
+          <Button
+            onMouseDown={() => {
+              window.alert(
+                postalCodeMessage
+                  ? '送信できません。入力内容を確認してください':
+                  !agree || !postalCode ? '入力が不正です'
+                  : '送信しました'
+              );
+            }}
+            as="span"
+            tabIndex={0}
+          >
+            送信
+          </Button>
+
+          <div style={{ display: 'inline-block', marginLeft: '1rem'}}>
+            <CheckBox
+              name="tos"
+              value="agree"
+              checked={agree}
+              onChange={(e) => setAgree(e.target.checked)}
+            >
+              利用規約に同意する
+            </CheckBox>
+          </div>
         </FormItem>
       </ExampleContainer>
-      <ExampleContainer>
-        <FieldWithBadErrorMessage fieldAriaLabel="postal-code" />
-      </ExampleContainer>
-      <div style={{ marginTop: '1rem' }}>
-        <Button
-          onMouseDown={() => {
-            window.alert('送信しました');
-          }}
-          as="span"
-          tabIndex={0}
-        >
-          送信
-        </Button>
-      </div>
     </>
   );
 };
