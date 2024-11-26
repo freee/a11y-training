@@ -36,7 +36,7 @@ export const AnnotationCompany = (): JSX.Element => (
           <TextField type="text" aria-describedby="annotation-company" />
         </label>
         <FormAnnotation id="annotation-company">
-          記入例: freee株式会社
+          記入例: フリー株式会社
         </FormAnnotation>
       </FormItem>
     </form>
@@ -73,7 +73,7 @@ export const PlaceholderCompany = (): JSX.Element => (
       <FormItem>
         <label>
           <FormLabel>会社名</FormLabel>
-          <TextField type="text" placeholder="freee株式会社" />
+          <TextField type="text" placeholder="フリー株式会社" />
         </label>
       </FormItem>
     </form>
