@@ -4,7 +4,7 @@ import { TextLink } from '../../parts';
 
 export const GoodElement: React.FC = () => (
   <ExampleContainer>
-    <TextLink href="https://corp.freee.co.jp">freee株式会社</TextLink>
+    <TextLink href="https://corp.freee.co.jp">フリー株式会社</TextLink>
   </ExampleContainer>
 );
 
@@ -16,7 +16,7 @@ export const BadElementA: React.FC = () => (
         location.href = 'https://corp.freee.co.jp';
       }}
     >
-      freee株式会社
+      フリー株式会社
     </TextLink>
   </ExampleContainer>
 );
@@ -29,7 +29,7 @@ export const BadElementSpan: React.FC = () => (
         location.href = 'https://corp.freee.co.jp';
       }}
     >
-      freee株式会社
+      フリー株式会社
     </TextLink>
   </ExampleContainer>
 );
