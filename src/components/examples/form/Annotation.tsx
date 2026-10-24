@@ -13,9 +13,9 @@ export const AnnotationPassword = (): JSX.Element => (
       <FormItem>
         <label>
           <FormLabel>パスワード</FormLabel>
-          <TextField type="password" aria-describedby="annotaiton-password" />
+          <TextField type="password" aria-describedby="annotation-password" />
         </label>
-        <FormAnnotation id="annotaiton-password">
+        <FormAnnotation id="annotation-password">
           8文字以上の英数字で入力してください
         </FormAnnotation>
       </FormItem>
